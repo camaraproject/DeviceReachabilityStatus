@@ -501,7 +501,7 @@ Feature: Device Reachability Status Subscriptions API, vwip - Operations createD
     And the response property "$.code" is "UNAUTHENTICATED"
     And the response property "$.message" contains a user friendly text
 
-  @reachability_status_subscriptions_retrieve__list_401.10_no_authorization_header
+  @reachability_status_subscriptions_retrieve_list_401.10_no_authorization_header
   Scenario: No Authorization header
     Given the request header "Authorization" is removed
     When the request "retrieveDeviceReachabilityStatusSubscriptionList" is sent
