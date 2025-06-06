@@ -19,7 +19,7 @@ info:
 
     * **Connectivity:** Indicates the connectivity types (DATA, SMS or both) through which the device is reachable from the network.
 
-    * **LastStatusTime** : This property specifies the time when the status was last updated. Its presence in the response indicates the freshness of the information, while its absence implies the information may be outdated or its freshness is uncertain.
+    * **LastStatusTime** : The time when the status was last confirmed to be correct. An older status is more likely to now be incorrect.
 
     # API Functionality
 
@@ -179,6 +179,7 @@ components:
     ReachabilityStatusResponse:
       type: object
       required:
+        - lastStatusTime
         - reachable
       properties:
         lastStatusTime:
