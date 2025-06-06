@@ -540,7 +540,7 @@ Feature: Device Reachability Status Subscriptions API, vwip - Operations createD
     # To test this, a token must not have the required scope
     Given the header "Authorization" set to an access token not including scope "device-reachability-status-subscriptions:org.camaraproject.device-reachability-status-subscriptions.v0.reachability-data:create"
     And the request body is compliant with the schema "#/components/schemas/SubscriptionRequest"
-    And the request body property "$.types" is equal to "device-reachability-status-subscriptions:org.camaraproject.device-reachability-status-subscriptions.v0.reachability-data"
+    And the request body property "$.types" is equal to "org.camaraproject.device-reachability-status-subscriptions.v0.reachability-data"
     When the request "createDeviceReachabilityStatusSubscription" is sent
     Then the response status code is 403
     And the response property "$.status" is 403
@@ -552,7 +552,7 @@ Feature: Device Reachability Status Subscriptions API, vwip - Operations createD
     # To test this, a token must not have the required scope
     Given the header "Authorization" set to an access token not including scope "device-reachability-status-subscriptions:org.camaraproject.device-reachability-status-subscriptions.v0.reachability-sms:create"
     And the request body is compliant with the schema "#/components/schemas/SubscriptionRequest"
-    And the request body property "$.types" is equal to "device-reachability-status-subscriptions:org.camaraproject.device-reachability-status-subscriptions.v0.reachability-sms"
+    And the request body property "$.types" is equal to "org.camaraproject.device-reachability-status-subscriptions.v0.reachability-sms"
     When the request "createDeviceReachabilityStatusSubscription" is sent
     Then the response status code is 403
     And the response property "$.status" is 403
@@ -564,7 +564,7 @@ Feature: Device Reachability Status Subscriptions API, vwip - Operations createD
     # To test this, a token must not have the required scope
     Given the header "Authorization" set to an access token not including scope "device-reachability-status-subscriptions:org.camaraproject.device-reachability-status-subscriptions.v0.reachability-disconnected:create"
     And the request body is compliant with the schema "#/components/schemas/SubscriptionRequest"
-    And the request body property "$.types" is equal to "device-reachability-status-subscriptions:org.camaraproject.device-reachability-status-subscriptions.v0.reachability-disconnected"
+    And the request body property "$.types" is equal to "org.camaraproject.device-reachability-status-subscriptions.v0.reachability-disconnected"
     When the request "createDeviceReachabilityStatusSubscription" is sent
     Then the response status code is 403
     And the response property "$.status" is 403
