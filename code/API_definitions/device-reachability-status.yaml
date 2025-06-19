@@ -130,12 +130,12 @@ paths:
                     lastStatusTime: "2024-02-20T10:41:38.657Z"
                     reachable: true
                     connectivity: ["SMS"]
-                Reachable Using data:
+                Reachable Using Data:
                   value:
                     lastStatusTime: "2024-02-20T10:41:38.657Z"
                     reachable: true
                     connectivity: ["DATA"]
-                Reachable Using data and SMS:
+                Reachable Using Data and SMS:
                   value:
                     lastStatusTime: "2024-02-20T10:41:38.657Z"
                     reachable: true
