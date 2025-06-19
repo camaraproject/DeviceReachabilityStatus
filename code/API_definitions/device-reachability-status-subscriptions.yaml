@@ -1589,9 +1589,7 @@ components:
         types:
           - "org.camaraproject.device-reachability-status-subscriptions.v0.reachability-data"
         config:
-          subscriptionDetail:
-            device:
-              phoneNumber: "+123456789"
+          subscriptionDetail: {}
           subscriptionExpireTime: "2024-07-17T13:18:23.682Z"
           subscriptionMaxEvents: 5
           initialEvent: true
