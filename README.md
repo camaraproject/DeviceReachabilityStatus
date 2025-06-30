@@ -17,14 +17,15 @@ Incubating API Repository to evolve and maintain the definitions and documentati
 
 * Service API(s) “DeviceReachabilityStatus” (see APIBacklog.md) 
 * The API(s) provide(s) the API consumer with the ability to:  
-  * §Short API scope description§ !! Add here a scope description according to the API proposal
+  * check if a device is reachable or is not connected to the network
+  * receive notifications if the connectivity status of the device changes
 * Describe, develop, document, and test the API(s)
-* Started: §start date§
+* Started: July 2022 (within [DeviceStatus](https://github.com/camaraproject/DeviceStatus) repository)
 * Incubating stage since: February 2025 (via DeviceStatus)
 
 ## Release Information
 
-The repository has no (pre)releases yet, work in progress is within the main branch.
+The latest public release of the Device Status repository, including the DeviceReachabilityStatus API, is available here: https://github.com/camaraproject/DeviceStatus/releases/latest
 <!-- Optional: an explicit listing of the latest (pre-)release with additional information, e.g. links to the API definitions -->
 <!-- In addition use/uncomment one or multiple the following alternative options when becoming applicable -->
 <!-- Pre-releases of this sub project are available in https://github.com/camaraproject/DeviceReachabilityStatus/releases -->
