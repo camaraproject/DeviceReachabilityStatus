@@ -33,7 +33,7 @@ info:
 
       - ``org.camaraproject.device-reachability-status-subscriptions.v0.reachability-disconnected``: Event triggered when the device is not connected.
 
-    Note: Additionally to these list, ``org.camaraproject.device-reachability-status-subscriptions.v0.subscription-ends`` notification `type` is sent when the subscription ends.
+    Note: Additionally to these list, ``org.camaraproject.device-reachability-status-subscriptions.v0.subscription-ended`` notification `type` is sent when the subscription is terminated.
     This notification does not require dedicated subscription.
 
     It is used in following cases:
@@ -176,8 +176,8 @@ paths:
                         $ref: "#/components/examples/REACHABILITY_SMS"
                       reachability-disconnected:
                         $ref: "#/components/examples/REACHABILITY_DISCONNECTED"
-                      subscription-ends:
-                        $ref: "#/components/examples/SUBSCRIPTION_ENDS"
+                      subscription-ended:
+                        $ref: "#/components/examples/SUBSCRIPTION_ENDED"
               responses:
                 "204":
                   description: Successful notification
@@ -587,12 +587,12 @@ components:
 
         reachability-disconnected - Event triggered when the device is not connected.
 
-        subscription-ends - Event triggered when the subscription is terminated
+        subscription-ended - Event triggered when the subscription is terminated
       enum:
         - org.camaraproject.device-reachability-status-subscriptions.v0.reachability-data
         - org.camaraproject.device-reachability-status-subscriptions.v0.reachability-sms
         - org.camaraproject.device-reachability-status-subscriptions.v0.reachability-disconnected
-        - org.camaraproject.device-reachability-status-subscriptions.v0.subscription-ends
+        - org.camaraproject.device-reachability-status-subscriptions.v0.subscription-ended
 
     SubscriptionEventType:
       type: string
@@ -822,7 +822,7 @@ components:
           org.camaraproject.device-reachability-status-subscriptions.v0.reachability-data: "#/components/schemas/EventReachabilityData"
           org.camaraproject.device-reachability-status-subscriptions.v0.reachability-sms: "#/components/schemas/EventReachabilitySms"
           org.camaraproject.device-reachability-status-subscriptions.v0.reachability-disconnected: "#/components/schemas/EventReachabilityDisconnected"
-          org.camaraproject.device-reachability-status-subscriptions.v0.subscription-ends: "#/components/schemas/EventSubscriptionEnds"
+          org.camaraproject.device-reachability-status-subscriptions.v0.subscription-ended: "#/components/schemas/EventSubscriptionEnded"
 
     Source:
       type: string
@@ -888,17 +888,17 @@ components:
         subscriptionId:
           $ref: "#/components/schemas/SubscriptionId"
 
-    EventSubscriptionEnds:
-      description: event structure for event subscription ends
+    EventSubscriptionEnded:
+      description: Event structure for sending subscription-ended event
       allOf:
         - $ref: "#/components/schemas/CloudEvent"
         - type: object
           properties:
             data:
-              $ref: "#/components/schemas/SubscriptionEnds"
+              $ref: "#/components/schemas/SubscriptionEnded"
 
-    SubscriptionEnds:
-      description: Event detail structure for org.camaraproject.device-reachability-status-subscriptions.v0.subscription-ends event
+    SubscriptionEnded:
+      description: Event detail structure for org.camaraproject.device-reachability-status-subscriptions.v0.subscription-ended event
       type: object
       required:
         - terminationReason
@@ -1502,11 +1502,11 @@ components:
           subscriptionId: qs15-h556-rt89-1298
         time: "2023-01-19T13:18:23.682Z"
 
-    SUBSCRIPTION_ENDS:
+    SUBSCRIPTION_ENDED:
       value:
         id: "123658"
         source: https://notificationSendServer12.supertelco.com
-        type: org.camaraproject.device-reachability-status-subscriptions.v0.subscription-ends
+        type: org.camaraproject.device-reachability-status-subscriptions.v0.subscription-ended
         specversion: "1.0"
         datacontenttype: application/json
         data:
