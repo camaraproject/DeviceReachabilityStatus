@@ -1651,7 +1651,7 @@ components:
           device:
             phoneNumber: "+123456789"
         time: "2024-03-05T15:00:23.682Z"
-        
+
     ACTIVE_SUBSCRIPTION:
       value:
         id: 550e8400-e29b-41d4-a716-446655440000
