@@ -36,6 +36,7 @@ The API definition(s) are based on
 * Make lastStatusTime mandatory in 200 responses of the API by @eric-murray in https://github.com/camaraproject/DeviceReachabilityStatus/pull/18
 * Update x-correlator schema by @eric-murray in https://github.com/camaraproject/DeviceReachabilityStatus/pull/28
 * Update error response documentation in OAS definitions by @eric-murray in https://github.com/camaraproject/DeviceReachabilityStatus/pull/29
+* Commonalities alignement for device reachability status by @bigludo7 in https://github.com/camaraproject/DeviceReachabilityStatus/pull/36
 
 ### Fixed
 
@@ -51,12 +52,14 @@ The API definition(s) are based on
   - OpenAPI [YAML spec file](https://github.com/camaraproject/DeviceReachabilityStatus/blob/r1.1/code/API_definitions/device-reachability-status-subscriptions.yaml)
 
 ### Added
+* Add subscription started & updated event by @bigludo7 in https://github.com/camaraproject/DeviceReachabilityStatus/pull/34
 
 ### Changed
 * change sink format to format: uri by @maxl2287 in https://github.com/camaraproject/DeviceReachabilityStatus/pull/17
 * Update x-correlator schema by @eric-murray in https://github.com/camaraproject/DeviceReachabilityStatus/pull/28
 * Rename subscription-ends event to subscription-ended by @eric-murray in https://github.com/camaraproject/DeviceReachabilityStatus/pull/30
 * Update error response documentation in OAS definitions by @eric-murray in https://github.com/camaraproject/DeviceReachabilityStatus/pull/29
+* Commonalities alignement for device reachability subscription by @bigludo7 in https://github.com/camaraproject/DeviceReachabilityStatus/pull/36
 
 ### Fixed
 * fix: remove "Generic High Entropy Secret" by @maxl2287 in https://github.com/camaraproject/DeviceReachabilityStatus/pull/16
