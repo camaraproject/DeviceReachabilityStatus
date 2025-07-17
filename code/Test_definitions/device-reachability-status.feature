@@ -15,7 +15,7 @@ Feature: CAMARA Device reachability status API, v1.1.0-rc.2 - Operation getReach
     Given the resource "{api-root}/device-reachability-status/v1rc2/retrieve" set as base-url
     And the header "Content-Type" is set to "application/json"
     And the header "Authorization" is set to a valid access token
-    And the header "x-correlator" is set to a UUID value
+    And the header "x-correlator" complies with the schema at "#/components/schemas/XCorrelator"
     And the request body is set by default to a request body compliant with the schema "#/components/schemas/RequestReachabilityStatus"
 
 ##########################
