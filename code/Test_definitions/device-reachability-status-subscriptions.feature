@@ -1,5 +1,5 @@
 @Device_Reachability_Status_Subscription
-Feature: Device Reachability Status Subscriptions API, vwip - Operations createDeviceReachabilityStatusSubscription, retrieveDeviceReachabilityStatusSubscriptionList, retrieveDeviceReachabilityStatusSubscription and deleteDeviceReachabilityStatusSubscription
+Feature: Device Reachability Status Subscriptions API, v0.8.0-rc.1 - Operations createDeviceReachabilityStatusSubscription, retrieveDeviceReachabilityStatusSubscriptionList, retrieveDeviceReachabilityStatusSubscription and deleteDeviceReachabilityStatusSubscription
 
   # Input to be provided by the implementation to the tester
   #
@@ -15,9 +15,9 @@ Feature: Device Reachability Status Subscriptions API, vwip - Operations createD
   # References to OAS spec schemas refer to schemas specifies in device-reachability-status-subscriptions.yaml
 
   Background: Common Device Reachability Status Subscriptions setup
-    Given the resource "{apiroot}/device-reachability-status-subscriptions/vwip" as base-url
+    Given the resource "{apiroot}/device-reachability-status-subscriptions/v0.8rc1" as base-url
     And the header "Authorization" is set to a valid access token
-    And the header "x-correlator" is set to a UUID value
+    And the header "x-correlator" complies with the schema at "#/components/schemas/XCorrelator"
 
 ##########################
 # Happy path scenarios
