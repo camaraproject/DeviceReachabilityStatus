@@ -1,4 +1,4 @@
-@Device_Reachability_Status_Subscription
+# device-reachability-status-subscriptions
 Feature: Device Reachability Status Subscriptions API, vwip - Operations createDeviceReachabilityStatusSubscription, retrieveDeviceReachabilityStatusSubscriptionList, retrieveDeviceReachabilityStatusSubscription and deleteDeviceReachabilityStatusSubscription
 
   # Input to be provided by the implementation to the tester
@@ -18,6 +18,7 @@ Feature: Device Reachability Status Subscriptions API, vwip - Operations createD
     Given the resource "{apiroot}/device-reachability-status-subscriptions/vwip" as base-url
     And the header "Authorization" is set to a valid access token
     And the header "x-correlator" complies with the schema at "#/components/schemas/XCorrelator"
+    And the request body is compliant with the OAS schema at "#/component/schemas/SubscriptionRequest"
 
 ##########################
 # Happy path scenarios
@@ -27,7 +28,6 @@ Feature: Device Reachability Status Subscriptions API, vwip - Operations createD
   Scenario Outline: Synchronous subscription creation with 2-legged-access-token
     # Some implementations may only support asynchronous subscription creation
     Given the header "Authorization" is set to a valid access token which does not identify any device
-    And the request body is compliant with the OAS schema at "#/component/schemas/SubscriptionRequest"
     When the request "createDeviceReachabilityStatusSubscription" is sent
     And request property "$.types" is one of the allowed values "<subscription-creation-types>"
     And request property "$.protocol" is equal to "HTTP"
@@ -39,8 +39,7 @@ Feature: Device Reachability Status Subscriptions API, vwip - Operations createD
     And the response body complies with the OAS schema at "#/components/schemas/Subscription"
     And the response properties "$.types", "$.protocol", "$.sink" and "$.config.subscriptionDetail.device.phoneNumber" are present with the values provided in the request
     And the response property "$.id" is present
-    And the response property "$.startsAt", if present, has a valid value with date-time format
-    And the response property "$.expiresAt", if present, has a valid value with date-time format
+    And the response properties "$.startsAt" and "$.expiresAt", if present, have a valid value with date-time format
     And the response property "$.status", if present, has the value "ACTIVATION_REQUESTED", "ACTIVE" or "INACTIVE"
 
     Examples:
@@ -53,7 +52,6 @@ Feature: Device Reachability Status Subscriptions API, vwip - Operations createD
   Scenario Outline: Synchronous subscription creation with 3-legged-access-token
     # Some implementations may only support asynchronous subscription creation
     Given the header "Authorization" is set to a valid access token which identifies a valid device
-    And the request body is compliant with the OAS schema at "#/component/schemas/SubscriptionRequest"
     When the request "createDeviceReachabilityStatusSubscription" is sent
     And request property "$.types" is one of the allowed values "<subscription-creation-types>"
     And request property "$.protocol" is equal to "HTTP"
@@ -65,8 +63,7 @@ Feature: Device Reachability Status Subscriptions API, vwip - Operations createD
     And the response body complies with the OAS schema at "#/components/schemas/Subscription"
     And the response properties "$.types", "$.protocol" and "$.sink" are present with the values provided in the request
     And the response property "$.id" is present
-    And the response property "$.startsAt", if present, has a valid value with date-time format
-    And the response property "$.expiresAt", if present, has a valid value with date-time format
+    And the response properties "$.startsAt" and "$.expiresAt", if present, have a valid value with date-time format
     And the response property "$.status", if present, has the value "ACTIVATION_REQUESTED", "ACTIVE" or "INACTIVE"
     And the response property "$.config.subscriptionDetail.device" is not present
 
@@ -100,7 +97,7 @@ Feature: Device Reachability Status Subscriptions API, vwip - Operations createD
   @reachability_status_subscriptions_03.1_retrieve_by_id_2legs
   Scenario: Check existing subscription is retrieved by id with a 2-legged access token
     Given a subscription exists and has a subscriptionId equal to "id"
-    And the header "Authorization" is set to a valid access token which does not identify any device 
+    And the header "Authorization" is set to a valid access token which does not identify any device
     When the request "retrieveDeviceReachabilityStatusSubscription" is sent
     And the path parameter "subscriptionId" is set to "id"
     Then the response status code is 200
@@ -126,7 +123,7 @@ Feature: Device Reachability Status Subscriptions API, vwip - Operations createD
   @reachability_status_subscriptions_04_retrieve_list_2legs
   Scenario: Check existing subscription(s) is/are retrieved in list
     Given at least one subscription is existing for the API consumer making this request
-    And the header "Authorization" is set to a valid access token which does not identify any device 
+    And the header "Authorization" is set to a valid access token which does not identify any device
     When the request "retrieveDeviceReachabilityStatusSubscriptionList" is sent
     Then the response status code is 200
     And the response header "Content-Type" is "application/json"
@@ -535,7 +532,7 @@ Feature: Device Reachability Status Subscriptions API, vwip - Operations createD
   @reachability_status_subscriptions_create_403.1_permission_denied
   Scenario: Subscription creation without having the required scope
     # To test this, a token must not have the required scope
-    Given the header "Authorization" set to an access token not including scope "device-reachability-status-subscriptions:org.camaraproject.device-reachability-status-subscriptions.v0.reachability-data:create"
+    Given the access token does not include scope "device-reachability-status-subscriptions:org.camaraproject.device-reachability-status-subscriptions.v0.reachability-data:create"
     And the request body is compliant with the schema "#/components/schemas/SubscriptionRequest"
     And the request body property "$.types" is equal to "org.camaraproject.device-reachability-status-subscriptions.v0.reachability-data"
     When the request "createDeviceReachabilityStatusSubscription" is sent
@@ -547,7 +544,7 @@ Feature: Device Reachability Status Subscriptions API, vwip - Operations createD
   @reachability_status_subscriptions_create_403.2_permission_denied
   Scenario: Subscription creation without having the required scope
     # To test this, a token must not have the required scope
-    Given the header "Authorization" set to an access token not including scope "device-reachability-status-subscriptions:org.camaraproject.device-reachability-status-subscriptions.v0.reachability-sms:create"
+    Given the access token does not include scope "device-reachability-status-subscriptions:org.camaraproject.device-reachability-status-subscriptions.v0.reachability-sms:create"
     And the request body is compliant with the schema "#/components/schemas/SubscriptionRequest"
     And the request body property "$.types" is equal to "org.camaraproject.device-reachability-status-subscriptions.v0.reachability-sms"
     When the request "createDeviceReachabilityStatusSubscription" is sent
@@ -559,7 +556,7 @@ Feature: Device Reachability Status Subscriptions API, vwip - Operations createD
   @reachability_status_subscriptions_create_403.3_permission_denied
   Scenario: Subscription creation without having the required scope
     # To test this, a token must not have the required scope
-    Given the header "Authorization" set to an access token not including scope "device-reachability-status-subscriptions:org.camaraproject.device-reachability-status-subscriptions.v0.reachability-disconnected:create"
+    Given the access token does not including scope "device-reachability-status-subscriptions:org.camaraproject.device-reachability-status-subscriptions.v0.reachability-disconnected:create"
     And the request body is compliant with the schema "#/components/schemas/SubscriptionRequest"
     And the request body property "$.types" is equal to "org.camaraproject.device-reachability-status-subscriptions.v0.reachability-disconnected"
     When the request "createDeviceReachabilityStatusSubscription" is sent
@@ -570,7 +567,7 @@ Feature: Device Reachability Status Subscriptions API, vwip - Operations createD
 
   @reachability_status_subscriptions_create_403.4_subscription_mismatch_for_requested_events_subscription
   Scenario: Subscription creation with invalid access token for requested events subscription
-    Given the header "Authorization" set to an access token that includes only a single subscription scope
+    Given the access token includes only a single subscription scope
     And the request body is compliant with the schema "#/components/schemas/SubscriptionRequest"
     And the request body property "$.types" is equal to a valid type other than the event corresponding to the access token scope
     When the request "createDeviceReachabilityStatusSubscription" is sent
