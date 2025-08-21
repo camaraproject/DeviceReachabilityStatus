@@ -358,7 +358,7 @@ Feature: Device Reachability Status Subscriptions API, vwip - Operation createDe
 ##################
 
   @reachability_status_subscriptions_create_403.1_permission_denied
-  Scenario: Subscription creation without having the required scope
+  Scenario: Data reachability subscription creation without having the required scope
     # To test this, a token must not have the required scope
     Given the access token does not include scope "device-reachability-status-subscriptions:org.camaraproject.device-reachability-status-subscriptions.v0.reachability-data:create"
     And the request body is compliant with the schema "#/components/schemas/SubscriptionRequest"
@@ -370,7 +370,7 @@ Feature: Device Reachability Status Subscriptions API, vwip - Operation createDe
     And the response property "$.message" contains a user friendly text
 
   @reachability_status_subscriptions_create_403.2_permission_denied
-  Scenario: Subscription creation without having the required scope
+  Scenario: SMS reachability subscription creation without having the required scope
     # To test this, a token must not have the required scope
     Given the access token does not include scope "device-reachability-status-subscriptions:org.camaraproject.device-reachability-status-subscriptions.v0.reachability-sms:create"
     And the request body is compliant with the schema "#/components/schemas/SubscriptionRequest"
@@ -382,7 +382,7 @@ Feature: Device Reachability Status Subscriptions API, vwip - Operation createDe
     And the response property "$.message" contains a user friendly text
 
   @reachability_status_subscriptions_create_403.3_permission_denied
-  Scenario: Subscription creation without having the required scope
+  Scenario: Disconnected subscription creation without having the required scope
     # To test this, a token must not have the required scope
     Given the access token does not including scope "device-reachability-status-subscriptions:org.camaraproject.device-reachability-status-subscriptions.v0.reachability-disconnected:create"
     And the request body is compliant with the schema "#/components/schemas/SubscriptionRequest"
