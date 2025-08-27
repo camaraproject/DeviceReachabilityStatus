@@ -1,4 +1,4 @@
-@Device_Reachability_Status
+# device-reachability-status
 Feature: CAMARA Device reachability status API, vwip - Operation getReachabilityStatus
   # Input to be provided by the implementation to the tester
   #
@@ -215,7 +215,7 @@ Feature: CAMARA Device reachability status API, vwip - Operation getReachability
 #################
 
   @device_reachability_status_503_network_error
-   Scenario: Network error temporarily prevents the device reachability status from being retrieved
+  Scenario: Network error temporarily prevents the device reachability status from being retrieved
     # This test is for use by the API provider only
     Given a valid testing device supported by the service, identified by the token or provided in the request body
     And the request body is set to a valid request body
