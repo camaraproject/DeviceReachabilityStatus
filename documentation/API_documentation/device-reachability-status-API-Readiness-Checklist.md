@@ -12,10 +12,10 @@ Checklist for device-reachability-status 1.1.0 in r1.2
 |  6 | User stories                                 |   O   |         O         |    O    |    M   |  Y   | [device-reachability-status-User-Story.md](/documentation/API_documentation/device-reachability-status-User-Story.md)   |
 |  7 | Basic API test cases & documentation         |   O   |         M         |    M    |    M   |  Y   | [device-reachability-status.feature](/code/Test_definitions/device-reachability-status.feature) |
 |  8 | Enhanced API test cases & documentation      |   O   |         O         |    O    |    M   |  Y   | [device-reachability-status.feature](/code/Test_definitions/device-reachability-status.feature)   |
-|  9 | Test result statement                        |   O   |         O         |    O    |    M   |  Y   |      |
+|  9 | Test result statement                        |   O   |         O         |    O    |    M   |  Y   | See [here](https://github.com/camaraproject/DeviceReachabilityStatus/issues/44) |
 | 10 | API release numbering convention applied     |   M   |         M         |    M    |    M   |  Y   |      |
 | 11 | Change log updated                           |   M   |         M         |    M    |    M   |  Y   | [CHANGELOG.md](/CHANGELOG.md) |
-| 12 | Previous public release was certified        |   O   |         O         |    O    |    M   |  Y   | see (1) |
+| 12 | Previous public release was certified        |   O   |         O         |    O    |    M   |  Y   | See (1) |
 | 13 | API description (for marketing)              |   O   |         O         |    M    |    M   |  Y   | [wiki link](https://lf-camaraproject.atlassian.net/wiki/x/2wHWB) |
 
 (1) GSMA certified implementations of previous version by multiple operators (source: https://open-gateway.gsma.com/map as of 2025-03-11)
