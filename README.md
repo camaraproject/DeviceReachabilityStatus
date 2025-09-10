@@ -25,7 +25,7 @@ Incubating API Repository to evolve and maintain the definitions and documentati
 
 ## Release Information
 
-The latest public release of the DeviceReachabilityStatus repository is available [here](https://github.com/camaraproject/DeviceReachabilityStatus/releases/latest)
+**NEW**: the latest public release of the DeviceReachabilityStatus repository is available [here](https://github.com/camaraproject/DeviceReachabilityStatus/releases/latest), with the following API versions:**
 
   * **device-reachability-status v1.1.0**  
   [[YAML]](https://github.com/camaraproject/DeviceReachabilityStatus/blob/r1.2/code/API_definitions/device-reachability-status.yaml)
