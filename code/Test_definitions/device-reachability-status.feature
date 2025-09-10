@@ -8,6 +8,7 @@ Feature: CAMARA Device reachability status API, v1.1.0 - Operation getReachabili
   # Testing assets:
   # * A device object which reachability status is known by the network when connected.
   # * The known reachability status of the testing device
+  # * The apiRoot: API root of the server URL
   #
   # References to OAS spec schemas refer to schemas specifies in device-reachability-status.yaml
 
