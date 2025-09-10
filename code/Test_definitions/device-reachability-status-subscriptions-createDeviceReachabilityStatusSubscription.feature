@@ -15,7 +15,8 @@ Feature: Device Reachability Status Subscriptions API, v0.8.0 - Operation create
   # References to OAS spec schemas refer to schemas specifies in device-reachability-status-subscriptions.yaml
 
   Background: Common Device Reachability Status Subscriptions setup
-    Given the resource "{apiroot}/device-reachability-status-subscriptions/v0.8/subscriptions" as base-url
+    Given an environment at "apiRoot"
+    And the resource "/device-reachability-status-subscriptions/v0.8/subscriptions"
     And the header "Authorization" is set to a valid access token
     And the header "x-correlator" complies with the schema at "#/components/schemas/XCorrelator"
     And the request body is compliant with the OAS schema at "#/component/schemas/SubscriptionRequest"
