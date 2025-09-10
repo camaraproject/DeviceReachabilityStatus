@@ -11,6 +11,7 @@ Feature: Device Reachability Status Subscriptions API, v0.8.0 - Operation delete
   # * A device object where you can turn on/off the SMS or data usage reachability.
   # * The known reachability status of the testing device
   # * A sink-url identified as "callbackUrl", which receives notifications
+  # * The apiRoot: API root of the server URL
   #
   # References to OAS spec schemas refer to schemas specifies in device-reachability-status-subscriptions.yaml
 
