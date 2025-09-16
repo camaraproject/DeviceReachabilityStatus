@@ -25,12 +25,18 @@ Incubating API Repository to evolve and maintain the definitions and documentati
 
 ## Release Information
 
-The latest public release of the Device Status repository, including the DeviceReachabilityStatus API, is available here: https://github.com/camaraproject/DeviceStatus/releases/latest
-<!-- Optional: an explicit listing of the latest (pre-)release with additional information, e.g. links to the API definitions -->
-<!-- In addition use/uncomment one or multiple the following alternative options when becoming applicable -->
-Pre-releases of this sub project are available in https://github.com/camaraproject/DeviceReachabilityStatus/releases
-<!-- The latest public release is available here: https://github.com/camaraproject/DeviceReachabilityStatus/releases/latest -->
-<!-- For changes see [CHANGELOG.md](https://github.com/camaraproject/DeviceReachabilityStatus/blob/main/CHANGELOG.md) -->
+**NEW**: the latest public release of the DeviceReachabilityStatus repository is available [here](https://github.com/camaraproject/DeviceReachabilityStatus/releases/latest), with the following API versions:**
+
+  * **device-reachability-status v1.1.0**  
+  [[YAML]](https://github.com/camaraproject/DeviceReachabilityStatus/blob/r1.2/code/API_definitions/device-reachability-status.yaml)
+  [[View it on ReDoc]](https://redocly.github.io/redoc/?url=https://raw.githubusercontent.com/camaraproject/DeviceReachabilityStatus/r1.2/code/API_definitions/device-reachability-status.yaml&nocors)
+  [[View it on Swagger Editor]](https://camaraproject.github.io/swagger-ui/?url=https://raw.githubusercontent.com/camaraproject/DeviceReachabilityStatus/r1.2/code/API_definitions/device-reachability-status.yaml)
+  * **device-reachability-status-subscriptions v0.8.0**  
+  [[YAML]](https://github.com/camaraproject/DeviceReachabilityStatus/blob/r1.2/code/API_definitions/device-reachability-status-subscriptions.yaml)
+  [[View it on ReDoc]](https://redocly.github.io/redoc/?url=https://raw.githubusercontent.com/camaraproject/DeviceReachabilityStatus/r1.2/code/API_definitions/device-reachability-status-subscriptions.yaml&nocors)
+  [[View it on Swagger Editor]](https://camaraproject.github.io/swagger-ui/?url=https://raw.githubusercontent.com/camaraproject/DeviceReachabilityStatus/r1.2/code/API_definitions/device-reachability-status-subscriptions.yaml)
+
+Pre-releases of this sub project are available [here](https://github.com/camaraproject/DeviceReachabilityStatus/releases). For changes see the [change log](/CHANGELOG.md).
 
 ## Contributing
 

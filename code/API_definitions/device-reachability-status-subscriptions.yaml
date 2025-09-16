@@ -123,14 +123,14 @@ info:
   license:
     name: Apache 2.0
     url: https://www.apache.org/licenses/LICENSE-2.0.html
-  version: wip
+  version: 0.8.0
   x-camara-commonalities: 0.6
 externalDocs:
   description: Product documentation at CAMARA
-  url: https://github.com/camaraproject/DeviceStatus
+  url: https://github.com/camaraproject/DeviceReachabilityStatus
 
 servers:
-  - url: "{apiRoot}/device-reachability-status-subscriptions/vwip"
+  - url: "{apiRoot}/device-reachability-status-subscriptions/v0.8"
     variables:
       apiRoot:
         default: http://localhost:9091
@@ -477,16 +477,16 @@ components:
           type: string
           format: date-time
           example: 2023-01-17T13:18:23.682Z
-          description: The subscription expiration time (in date-time format) requested by the API consumer. Up to API project decision to keep it.
+          description: The subscription expiration time (in date-time format) requested by the API consumer.
         subscriptionMaxEvents:
           type: integer
-          description: Identifies the maximum number of event reports to be generated (>=1) requested by the API consumer - Once this number is reached, the subscription ends. Up to API project decision to keep it.
+          description: Identifies the maximum number of event reports to be generated (>=1) requested by the API consumer - Once this number is reached, the subscription ends.
           minimum: 1
           example: 5
         initialEvent:
           type: boolean
           description: |
-            Set to `true` by API consumer if consumer wants to get an event as soon as the subscription is created and current situation reflects event request.Up to API project decision to keep it.
+            Set to `true` by API consumer if consumer wants to get an event as soon as the subscription is created and current situation reflects event request.
             Example: Consumer subscribes to reachability SMS. If consumer sets initialEvent to true and device is already reachable by SMS, an event is triggered.
 
     SinkCredential:
@@ -827,7 +827,7 @@ components:
 
     SubscriptionId:
       type: string
-      description: The unique identifier of the subscription in the scope of the subscription manager. When this information is contained within an event notification, this concept SHALL be referred as `subscriptionId` as per [Commonalities Event Notification Model](https://github.com/camaraproject/Commonalities/blob/r2.3/documentation/API-design-guidelines.md#122-event-notification).
+      description: The unique identifier of the subscription in the scope of the subscription manager. When this information is contained within an event notification, this concept SHALL be referred as subscriptionId as per Commonalities Event Notification Model.
       example: qs15-h556-rt89-1298
 
     CloudEvent:

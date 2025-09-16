@@ -1,5 +1,5 @@
 # device-reachability-status-subscriptions-retrieveDeviceReachabilityStatusSubscriptionList
-Feature: Device Reachability Status Subscriptions API, vwip - Operation retrieveDeviceReachabilityStatusSubscriptionList
+Feature: Device Reachability Status Subscriptions API, v0.8.0 - Operation retrieveDeviceReachabilityStatusSubscriptionList
 
   # Input to be provided by the implementation to the tester
   #
@@ -11,11 +11,13 @@ Feature: Device Reachability Status Subscriptions API, vwip - Operation retrieve
   # * A device object where you can turn on/off the SMS or data usage reachability.
   # * The known reachability status of the testing device
   # * A sink-url identified as "callbackUrl", which receives notifications
+  # * The apiRoot: API root of the server URL
   #
   # References to OAS spec schemas refer to schemas specifies in device-reachability-status-subscriptions.yaml
 
   Background: Common Device Reachability Status Subscriptions setup
-    Given the resource "{apiroot}/device-reachability-status-subscriptions/vwip" as base-url
+    Given an environment at "apiRoot"
+    And the resource "{apiroot}/device-reachability-status-subscriptions/v0.8/subscriptions"
     And the header "Authorization" is set to a valid access token
     And the header "x-correlator" complies with the schema at "#/components/schemas/XCorrelator"
 
