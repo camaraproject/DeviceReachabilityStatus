@@ -1,5 +1,5 @@
 # device-reachability-status-subscriptions-retrieveDeviceReachabilityStatusSubscription
-Feature: Device Reachability Status Subscriptions API, v0.8.0 - Operation retrieveDeviceReachabilityStatusSubscription
+Feature: Device Reachability Status Subscriptions API, vwip - Operation retrieveDeviceReachabilityStatusSubscription
 
   # Input to be provided by the implementation to the tester
   #
@@ -17,7 +17,7 @@ Feature: Device Reachability Status Subscriptions API, v0.8.0 - Operation retrie
 
   Background: Common Device Reachability Status Subscriptions setup
     Given an environment at "apiRoot"
-    And the resource "/device-reachability-status-subscriptions/v0.8/subscriptions"
+    And the resource "/device-reachability-status-subscriptions/vwip/subscriptions"
     And the header "Authorization" is set to a valid access token
     And the header "x-correlator" complies with the schema at "#/components/schemas/XCorrelator"
 
