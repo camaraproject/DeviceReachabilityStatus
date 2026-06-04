@@ -379,16 +379,10 @@ components:
         reachability-data         - Event triggered when the device is connected to the network for Data usage (regardless of the SMS reachability).
         reachability-sms          - Event triggered when the device is connected to the network only for SMS usage.
         reachability-disconnected - Event triggered when the device is not connected.
-        subscription-started      - Event triggered when the subscription starts.
-        subscription-updated      - Event triggered when the subscription is updated.
-        subscription-ended        - Event triggered when the subscription ends.
       enum:
         - org.camaraproject.device-reachability-status-subscriptions.v0.reachability-data
         - org.camaraproject.device-reachability-status-subscriptions.v0.reachability-sms
         - org.camaraproject.device-reachability-status-subscriptions.v0.reachability-disconnected
-        - org.camaraproject.device-reachability-status-subscriptions.v0.subscription-started
-        - org.camaraproject.device-reachability-status-subscriptions.v0.subscription-updated
-        - org.camaraproject.device-reachability-status-subscriptions.v0.subscription-ended
 
     ApiNotificationEvent:
       description: |
