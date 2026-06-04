@@ -91,15 +91,17 @@ servers:
     variables:
       apiRoot:
         default: http://localhost:9091
-        description: API root
+        description: API root, defined by the service provider, e.g. `api.example.com` or `api.example.com/somepath`
+
 tags:
-  - name: Device reachability status
+  - name: Device Reachability Status
     description: Operations to get the current reachability status of a device
+
 paths:
   /retrieve:
     post:
       tags:
-        - Device reachability status
+        - Device Reachability Status
       summary: "Get the current reachability status information"
       description: Get the current reachability status information
       operationId: getReachabilityStatus
