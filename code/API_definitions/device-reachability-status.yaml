@@ -180,6 +180,7 @@ components:
         - $ref: "../common/CAMARA_common.yaml#/components/schemas/DateTime"
 
     ReachabilityStatusResponse:
+      description: Response body definition for a device reachability request
       type: object
       required:
         - lastStatusTime
@@ -193,7 +194,9 @@ components:
           description: Indicates overall device reachability
           type: boolean
         connectivity:
+          description: An array of the connectivity types for which the device is reachable
           type: array
+          maxItems: 2
           items:
             $ref: "#/components/schemas/ConnectivityType"
 
