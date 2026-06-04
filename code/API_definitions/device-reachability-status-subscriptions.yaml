@@ -740,6 +740,8 @@ components:
         specversion: "1.0"
         datacontenttype: application/json
         data:
+          device:
+            phoneNumber: "+123456789"
           initiationReason: SUBSCRIPTION_CREATED
           subscriptionId: qs15-h556-rt89-1298
         time: "2024-03-05T15:00:23.682Z"
@@ -753,6 +755,8 @@ components:
         specversion: "1.0"
         datacontenttype: application/json
         data:
+          device:
+            phoneNumber: "+123456789"
           updateReason: SUBSCRIPTION_ACTIVE
           subscriptionId: qs15-h556-rt89-1298
         time: "2024-03-05T15:00:23.682Z"
@@ -766,6 +770,8 @@ components:
         specversion: "1.0"
         datacontenttype: application/json
         data:
+          device:
+            phoneNumber: "+123456789"
           terminationReason: SUBSCRIPTION_EXPIRED
           subscriptionId: qs15-h556-rt89-1298
           terminationDescription: Subscription expiry time has been reached
