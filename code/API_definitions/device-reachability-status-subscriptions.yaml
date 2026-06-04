@@ -135,17 +135,17 @@ servers:
     variables:
       apiRoot:
         default: http://localhost:9091
-        description: API root, defined by the service provider, e.g. api.example.com or api.example.com/somepath
+        description: API root, defined by the service provider, e.g. `api.example.com` or `api.example.com/somepath`
 
 tags:
-  - name: Device reachability status subscription
+  - name: Device Reachability Status Subscription
     description: Operation to manage event subscription on device reachability status event.
 
 paths:
   /subscriptions:
     post:
       tags:
-        - Device reachability status subscription
+        - Device Reachability Status Subscription
       summary: "Create a device reachability status event subscription for a device"
       description: Create a device reachability status event subscription for a device
       operationId: createDeviceReachabilityStatusSubscription
@@ -254,7 +254,7 @@ paths:
 
     get:
       tags:
-        - Device reachability status subscription
+        - Device Reachability Status Subscription
       summary: "Retrieve a list of device reachability status event subscription"
       description: Retrieve a list of device reachability status event subscription(s)
       operationId: retrieveDeviceReachabilityStatusSubscriptionList
@@ -291,7 +291,7 @@ paths:
   /subscriptions/{subscriptionId}:
     get:
       tags:
-        - Device reachability status subscription
+        - Device Reachability Status Subscription
       summary: "Retrieve a device reachability status event subscription for a device"
       operationId: retrieveDeviceReachabilityStatusSubscription
       description: Retrieve a given subscription by ID
@@ -322,7 +322,7 @@ paths:
 
     delete:
       tags:
-        - Device reachability status subscription
+        - Device Reachability Status Subscription
       summary: "Delete a device reachability status event subscription for a device"
       operationId: deleteDeviceReachabilityStatusSubscription
       description: Delete a given subscription by ID
@@ -638,6 +638,7 @@ components:
 
     ReachabilityDataSmsDisconnected:
       type: object
+      description: Defines data that can be included in all API events
       required:
         - subscriptionId
       properties:
@@ -693,6 +694,7 @@ components:
 
   examples:
     REACHABILITY_DATA:
+      description: Example event when a device is reachable for data
       value:
         id: "123656"
         source: https://notificationSendServer12.supertelco.com
@@ -706,6 +708,7 @@ components:
         time: "2023-01-19T13:18:23.682Z"
 
     REACHABILITY_SMS:
+      description: Example event when a device is reachable for sms
       value:
         id: "123656"
         source: https://notificationSendServer12.supertelco.com
@@ -719,6 +722,7 @@ components:
         time: "2023-01-19T13:18:23.682Z"
 
     REACHABILITY_DISCONNECTED:
+      description: Example event when a device is not reachable
       value:
         id: "123656"
         source: https://notificationSendServer12.supertelco.com
@@ -778,6 +782,7 @@ components:
         time: "2024-03-22T05:40:23.682Z"
 
     ACTIVE_SUBSCRIPTION:
+      description: Example of the details of an active subscription when the device was identified using a 3-legged access token
       value:
         id: 550e8400-e29b-41d4-a716-446655440000
         sink: https://endpoint.example.com/sink
@@ -794,6 +799,7 @@ components:
         status: ACTIVE
 
     ACTIVE_SUBSCRIPTION_WITH_DEVICE_DISAMBIGUATION:
+      description: Example of the details of an active subscription when the device was identified using a request parameter
       value:
         id: 550e8400-e29b-41d4-a716-446655440000
         sink: https://endpoint.example.com/sink
@@ -812,6 +818,7 @@ components:
         status: ACTIVE
 
     SUBSCRIPTION_ACTIVATION_REQUESTED:
+      description: Example of the details of a subscription for which activation has been requested
       value:
         id: 550e8400-e29b-41d4-a716-446655440000
         sink: https://endpoint.example.com/sink
@@ -828,6 +835,7 @@ components:
         status: ACTIVATION_REQUESTED
 
     SUBSCRIPTION_DELETED:
+      description: Example of the details of a subscription which has been deleted
       value:
         id: 550e8400-e29b-41d4-a716-446655440000
         sink: https://endpoint.example.com/sink
@@ -844,6 +852,7 @@ components:
         status: DELETED
 
     CREATE_SUBSCRIPTION:
+      description: Example of a request to created a subscription when a 2-legged access token is being used
       value:
         sink: "https://endpoint.example.com/sink"
         sinkCredential: {
