@@ -415,17 +415,6 @@ components:
         - $ref: "#/components/schemas/ApiNotificationEvent"
         - $ref: "#/components/schemas/SubscriptionLifecycleEvent"
 
-    SubscriptionEventType:
-      type: string
-      description: |
-        reachability-data - Event triggered when the device is connected to the network for Data usage (regardless of the SMS reachability).
-        reachability-sms - Event triggered when the device is connected to the network only for SMS usage
-        reachability-disconnected - Event triggered when the device is not connected.
-      enum:
-        - org.camaraproject.device-reachability-status-subscriptions.v0.reachability-data
-        - org.camaraproject.device-reachability-status-subscriptions.v0.reachability-sms
-        - org.camaraproject.device-reachability-status-subscriptions.v0.reachability-disconnected
-
     Subscription:
       description: Represents a event-type subscription.
       type: object
