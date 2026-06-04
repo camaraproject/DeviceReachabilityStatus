@@ -606,9 +606,9 @@ components:
       discriminator:
         propertyName: type
         mapping:
-          org.camaraproject.sample-service-subscriptions.v0.subscription-started: "#/components/schemas/EventSubscriptionStarted"
-          org.camaraproject.sample-service-subscriptions.v0.subscription-updated: "#/components/schemas/EventSubscriptionUpdated"
-          org.camaraproject.sample-service-subscriptions.v0.subscription-ended: "#/components/schemas/EventSubscriptionEnded"
+          org.camaraproject.device-reachability-status-subscriptions.v0.subscription-started: "#/components/schemas/EventSubscriptionStarted"
+          org.camaraproject.device-reachability-status-subscriptions.v0.subscription-updated: "#/components/schemas/EventSubscriptionUpdated"
+          org.camaraproject.device-reachability-status-subscriptions.v0.subscription-ended: "#/components/schemas/EventSubscriptionEnded"
 
     SubscriptionLifecycleEventType:
       type: string
@@ -619,9 +619,9 @@ components:
         Kept as a separate named schema so the set of valid lifecycle type
         strings can be referenced independently from the discriminated schema.
       enum:
-        - org.camaraproject.sample-service-subscriptions.v0.subscription-started
-        - org.camaraproject.sample-service-subscriptions.v0.subscription-updated
-        - org.camaraproject.sample-service-subscriptions.v0.subscription-ended
+        - org.camaraproject.device-reachability-status-subscriptions.v0.subscription-started
+        - org.camaraproject.device-reachability-status-subscriptions.v0.subscription-updated
+        - org.camaraproject.device-reachability-status-subscriptions.v0.subscription-ended
 
     EventReachabilityData:
       description: event structure for reachability data usage
