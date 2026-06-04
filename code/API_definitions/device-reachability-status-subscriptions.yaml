@@ -334,7 +334,7 @@ paths:
         - $ref: "../common/CAMARA_common.yaml#/components/parameters/x-correlator"
       responses:
         "204":
-          description: Sample service subscription deleted
+          description: Event subscription deleted
           headers:
             x-correlator:
               $ref: "../common/CAMARA_common.yaml#/components/headers/x-correlator"
@@ -376,17 +376,12 @@ components:
     ApiEventType:
       type: string
       description: |
-        reachability-data - Event triggered when the device is connected to the network for Data usage (regardless of the SMS reachability).
-
-        reachability-sms - Event triggered when the device is connected to the network only for SMS usage.
-
+        reachability-data         - Event triggered when the device is connected to the network for Data usage (regardless of the SMS reachability).
+        reachability-sms          - Event triggered when the device is connected to the network only for SMS usage.
         reachability-disconnected - Event triggered when the device is not connected.
-
-        subscription-started - Event triggered when the subscription starts.
-
-        subscription-updated - Event triggered when the subscription is updated.
-
-        subscription-ended - Event triggered when the subscription ends.
+        subscription-started      - Event triggered when the subscription starts.
+        subscription-updated      - Event triggered when the subscription is updated.
+        subscription-ended        - Event triggered when the subscription ends.
       enum:
         - org.camaraproject.device-reachability-status-subscriptions.v0.reachability-data
         - org.camaraproject.device-reachability-status-subscriptions.v0.reachability-sms
@@ -754,8 +749,6 @@ components:
         specversion: "1.0"
         datacontenttype: application/json
         data:
-          device:
-            phoneNumber: "+123456789"
           terminationReason: SUBSCRIPTION_EXPIRED
           subscriptionId: qs15-h556-rt89-1298
           terminationDescription: Subscription expiry time has been reached
@@ -772,8 +765,6 @@ components:
         data:
           initiationReason: SUBSCRIPTION_CREATED
           subscriptionId: qs15-h556-rt89-1298
-          device:
-            phoneNumber: "+123456789"
         time: "2024-03-05T15:00:23.682Z"
 
     SUBSCRIPTION_UPDATED:
@@ -787,9 +778,21 @@ components:
         data:
           updateReason: SUBSCRIPTION_ACTIVE
           subscriptionId: qs15-h556-rt89-1298
-          device:
-            phoneNumber: "+123456789"
         time: "2024-03-05T15:00:23.682Z"
+
+    SUBSCRIPTION_ENDED:
+      description: The cloud event when a device reachability status subscription ends.
+      value:
+        id: "123658"
+        source: https://notificationSendServer12.supertelco.com
+        type: org.camaraproject.device-reachability-status-subscriptions.v0.subscription-ended
+        specversion: "1.0"
+        datacontenttype: application/json
+        data:
+          terminationReason: SUBSCRIPTION_EXPIRED
+          subscriptionId: qs15-h556-rt89-1298
+          terminationDescription: Subscription expiry time has been reached
+        time: "2024-03-22T05:40:23.682Z"
 
     ACTIVE_SUBSCRIPTION:
       value:
