@@ -403,9 +403,6 @@ components:
           org.camaraproject.device-reachability-status-subscriptions.v0.reachability-data: "#/components/schemas/EventReachabilityData"
           org.camaraproject.device-reachability-status-subscriptions.v0.reachability-sms: "#/components/schemas/EventReachabilitySms"
           org.camaraproject.device-reachability-status-subscriptions.v0.reachability-disconnected: "#/components/schemas/EventReachabilityDisconnected"
-          org.camaraproject.device-reachability-status-subscriptions.v0.subscription-started: "#/components/schemas/EventSubscriptionStarted"
-          org.camaraproject.device-reachability-status-subscriptions.v0.subscription-updated: "#/components/schemas/EventSubscriptionUpdated"
-          org.camaraproject.device-reachability-status-subscriptions.v0.subscription-ended: "#/components/schemas/EventSubscriptionEnded"
 
     NotificationEvent:
       description: |
