@@ -281,6 +281,11 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/SubscriptionList"
+              examples:
+                List of Subscriptions:
+                  $ref: "#/components/examples/SUBSCRIPTION_LIST"
+                Empty List of Subscriptions:
+                  $ref: "#/components/examples/EMPTY_SUBSCRIPTION_LIST"
         "400":
           $ref: "../common/CAMARA_common.yaml#/components/responses/Generic400"
         "401":
@@ -311,6 +316,15 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/Subscription"
+              examples:
+                Active Subscription:
+                  $ref: "#/components/examples/ACTIVE_SUBSCRIPTION"
+                Active Subscription With Device Disambiguation:
+                  $ref: "#/components/examples/ACTIVE_SUBSCRIPTION_WITH_DEVICE_DISAMBIGUATION"
+                Subscription Activation Requested:
+                  $ref: "#/components/examples/SUBSCRIPTION_ACTIVATION_REQUESTED"
+                Subscription Deleted:
+                  $ref: "#/components/examples/SUBSCRIPTION_DELETED"
         "400":
           $ref: "../common/CAMARA_event_common.yaml#/components/responses/SubscriptionIdRequired400"
         "401":
