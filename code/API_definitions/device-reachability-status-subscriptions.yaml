@@ -226,9 +226,9 @@ paths:
               schema:
                 $ref: "#/components/schemas/Subscription"
               examples:
-                Active Subscription:
+                active-subscription:
                   $ref: "#/components/examples/ACTIVE_SUBSCRIPTION"
-                Active Subscription With Device Disambiguation:
+                active-subscription-with-device-disambiguation:
                   $ref: "#/components/examples/ACTIVE_SUBSCRIPTION_WITH_DEVICE_DISAMBIGUATION"
         "202":
           description: Request accepted to be processed. It applies for async creation process.
@@ -282,9 +282,9 @@ paths:
               schema:
                 $ref: "#/components/schemas/SubscriptionList"
               examples:
-                List of Subscriptions:
+                list-of-subscriptions:
                   $ref: "#/components/examples/SUBSCRIPTION_LIST"
-                Empty List of Subscriptions:
+                empty-list-of-subscriptions:
                   $ref: "#/components/examples/EMPTY_SUBSCRIPTION_LIST"
         "400":
           $ref: "../common/CAMARA_common.yaml#/components/responses/Generic400"
@@ -317,13 +317,13 @@ paths:
               schema:
                 $ref: "#/components/schemas/Subscription"
               examples:
-                Active Subscription:
+                active-subscription:
                   $ref: "#/components/examples/ACTIVE_SUBSCRIPTION"
-                Active Subscription With Device Disambiguation:
+                active-subscription-with-device-disambiguation:
                   $ref: "#/components/examples/ACTIVE_SUBSCRIPTION_WITH_DEVICE_DISAMBIGUATION"
-                Subscription Activation Requested:
+                subscription-activation-requested:
                   $ref: "#/components/examples/SUBSCRIPTION_ACTIVATION_REQUESTED"
-                Subscription Deleted:
+                subscription-deleted:
                   $ref: "#/components/examples/SUBSCRIPTION_DELETED"
         "400":
           $ref: "../common/CAMARA_event_common.yaml#/components/responses/SubscriptionIdRequired400"
