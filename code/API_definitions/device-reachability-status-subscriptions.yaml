@@ -387,6 +387,22 @@ components:
         $ref: "../common/CAMARA_event_common.yaml#/components/schemas/SubscriptionId"
 
   schemas:
+    CreateSubscriptionDetail:
+      description: The detail of the requested event subscription.
+      type: object
+      properties:
+        device:
+          $ref: "../common/CAMARA_common.yaml#/components/schemas/Device"
+
+    Config:
+      description: 
+      allOf:
+        - $ref: "../common/CAMARA_event_common.yaml#/components/schemas/Config"
+        - type: object
+          properties:
+            subscriptionDetail:
+              $ref: "#/components/schemas/CreateSubscriptionDetail"
+
     ApiEventType:
       type: string
       description: |
@@ -542,7 +558,7 @@ components:
           items:
             $ref: "#/components/schemas/ApiEventType"
         config:
-          $ref: "../common/CAMARA_event_common.yaml#/components/schemas/Config"
+          $ref: "#/components/schemas/Config"
       discriminator:
         propertyName: protocol
         mapping:
