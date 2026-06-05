@@ -395,7 +395,7 @@ components:
           $ref: "../common/CAMARA_common.yaml#/components/schemas/Device"
 
     Config:
-      description: 
+      description:
       allOf:
         - $ref: "../common/CAMARA_event_common.yaml#/components/schemas/Config"
         - type: object
