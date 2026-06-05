@@ -395,7 +395,7 @@ components:
           $ref: "../common/CAMARA_common.yaml#/components/schemas/Device"
 
     Config:
-      description:
+      description: Config schema allowing for device to be specified as part of subscription detail
       allOf:
         - $ref: "../common/CAMARA_event_common.yaml#/components/schemas/Config"
         - type: object
