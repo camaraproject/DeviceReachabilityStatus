@@ -79,15 +79,15 @@ Changes documented below are compared to version 0.8.0.
 
 ### Changed
 
-* N/A
+* Update API definitions to fix CAMARA validation warnings and hints by @eric-murray in https://github.com/camaraproject/DeviceReachabilityStatus/pull/63
 
 ### Fixed
 
-* N/A
+* Fix network identifier example by @bigludo7 in https://github.com/camaraproject/DeviceReachabilityStatus/pull/55
 
 ### Removed
 
-* N/A
+* Delete redundant API Readiness Checklists by @eric-murray in https://github.com/camaraproject/DeviceReachabilityStatus/pull/71
 
 ## device-reachability-status 1.2.0-rc.3
 
@@ -110,15 +110,17 @@ Changes documented below are compared to version 1.1.0.
 
 ### Changed
 
-* N/A
+* Clarify LastStatusTime description in YAML by @eric-murray in https://github.com/camaraproject/DeviceReachabilityStatus/pull/51
+* Update API definitions to fix CAMARA validation warnings and hints by @eric-murray in https://github.com/camaraproject/DeviceReachabilityStatus/pull/63
 
 ### Fixed
 
-* N/A
+* Update description for RequestReachabilityStatus by @eric-murray in https://github.com/camaraproject/DeviceReachabilityStatus/pull/52
+* Fix network identifier example by @bigludo7 in https://github.com/camaraproject/DeviceReachabilityStatus/pull/55
 
 ### Removed
 
-* N/A
+* Delete redundant API Readiness Checklists by @eric-murray in https://github.com/camaraproject/DeviceReachabilityStatus/pull/71
 
 **Full Changelog**: https://github.com/camaraproject/DeviceReachabilityStatus/compare/r1.2...r2.1
 
