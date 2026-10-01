@@ -25,7 +25,7 @@ Feature: Device Reachability Status Subscriptions API, vwip - Operation retrieve
 # Happy path scenarios
 ##########################
 
-  @reachability_status_subscriptions_01.1_retrieve_by_id_2legs
+  @reachability_status_subscriptions_01_retrieve_by_id_2legs
   Scenario: Check existing subscription is retrieved by id with a 2-legged access token
     Given a subscription exists and has a subscriptionId equal to "id"
     And the header "Authorization" is set to a valid access token which does not identify any device
@@ -38,7 +38,7 @@ Feature: Device Reachability Status Subscriptions API, vwip - Operation retrieve
     And the response property "$.id" is equal to "id"
     And the response property "$.config.subscriptionDetail.device" is present
 
-  @reachability_status_subscriptions_01.2_retrieve_by_id_3legs
+  @reachability_status_subscriptions_02_retrieve_by_id_3legs
   Scenario: Check existing subscription is retrieved by id with a 3-legged access token
     Given a subscription exists and has a subscriptionId equal to "id"
     And the header "Authorization" is set to a valid access token which identifies the device associated with the subscription
@@ -50,6 +50,31 @@ Feature: Device Reachability Status Subscriptions API, vwip - Operation retrieve
     And the response body complies with the OAS schema at "#/components/schemas/Subscription"
     And the response property "$.id" is equal to "id"
     And the response property "$.config.subscriptionDetail.device" is not present
+
+@reachability_status_subscriptions_03_Operation_to_retrieve_subscription_based_on_an_existing_subscription-id_access_token_sink_credential_returned
+  # Some implementations may decide to not return the sinkCredential in the response (data minimization principle)
+  Scenario: Get a subscription based on existing subscription-id, with ACCESSTOKEN sinkCredential returned.
+    Given the path parameter "subscriptionId" is set to the identifier of an existing roaming status subscription
+    When the request "retrieveDeviceReachabilityStatusSubscription" is sent
+    Then the response code is 200
+    And the response header "Content-Type" is "application/json"
+    And the response header "x-correlator" has the same value as the request header "x-correlator"
+    And the response body complies with the OAS schema at "#/components/schemas/Subscription"
+    And the response body property "$.sinkCredential.credentialType", if present, is set to value "ACCESSTOKEN"
+    And the response body property "$.sinkCredential.accessTokenExpiresUtc", if present, is set to the same value of the request property "$.sinkCredential.accessTokenExpiresUtc"
+
+  @reachability_status_subscriptions_04_Operation_to_retrieve_subscription_based_on_an_existing_subscription-id_private_jwt_key_sink_credential_returned
+  # Some implementations may decide to not return the sinkCredential in the response (data minimization principle)
+  # Mainly applicable for in-band provisioning of PRIVATE_JWT_KEY mode for a given subscription
+  Scenario: Get a subscription based on existing subscription-id, with PRIVATE_JWT_KEY sinkCredential returned.
+    Given the path parameter "subscriptionId" is set to the identifier of an existing roaming status subscription
+    When the request "retrieveDeviceReachabilityStatusSubscription" is sent
+    Then the response code is 200
+    And the response header "Content-Type" is "application/json"
+    And the response header "x-correlator" has the same value as the request header "x-correlator"
+    And the response body complies with the OAS schema at "#/components/schemas/Subscription"
+    And the response body property "$.sinkCredential.credentialType" is set to value "PRIVATE_JWT_KEY"
+    And the response body property "$.sinkCredential.jwksUri" is set to a valid value
 
 ################
 # Error scenarios for management of input parameter device
