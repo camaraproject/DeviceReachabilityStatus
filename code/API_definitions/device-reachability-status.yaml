@@ -67,7 +67,7 @@ info:
     - The end user has not consented to the API consumer getting access to the device identifier information (2-legged access token only)
 
     `422 SERVICE_NOT_APPLICABLE`:
-    - A device identifier cannot be provided for the identified device. For example, the phone number might identify a landline.
+    - The reachability status is not applicable to the identified device. For example, the phone number might identify a landline.
 
     `422 UNSUPPORTED_IDENTIFIER`:
     - A parameter provided in the `device` object is not supported by this implementation (e.g. `networkAccessIdentifier`)
