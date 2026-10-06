@@ -44,10 +44,10 @@ info:
       - `org.camaraproject.device-reachability-status-subscriptions.v0.subscription-updated` is sent when the subscription is updated.
       - `org.camaraproject.device-reachability-status-subscriptions.v0.subscription-ended` is sent when the subscription ends.
 
-    It is used in following cases:
+    The `subscription-ended` event may used in following cases:
       - the subscription expire time (optionally set by the requester) has been reached
       - the maximum number of subscription events (optionally set by the requester) has been reached
-      - the subscription was deleted by the requester
+      - the subscription was deleted by the API consumer
       - the expiry time for the access token `sinkCredential` (optionally set by the API consumer) time has been reached
       - the API provider has to stop sending notifications early
 
