@@ -72,7 +72,7 @@ info:
     `422 UNSUPPORTED_IDENTIFIER`:
     - A parameter provided in the `device` object is not supported by this implementation (e.g. `networkAccessIdentifier`)
 
-    `422 MISSING_IDENTIFIER`:
+    `422 MISSING_IDENTIFIER`:\
     `422 UNNECESSARY_IDENTIFIER`:
     - See the section "Identifying the device from the access token" below
 
