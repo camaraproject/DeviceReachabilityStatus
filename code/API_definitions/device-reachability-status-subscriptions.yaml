@@ -2,7 +2,7 @@ openapi: 3.0.3
 info:
   title: Device Reachability Status Subscriptions
   description: |
-    This API provides the API consumer with the ability to subscribe to Reachability status events.
+    This API provides the API consumer with the ability to subscribe to reachability status events.
 
     # Introduction
 
@@ -11,13 +11,13 @@ info:
     # Relevant terms and definitions
 
     * **Reachable**:\
-       A device is considered to be reachable if it has data connectivity, or can receive SMS messages.
+       A device is considered to be reachable if it has mobile data connectivity, or can receive SMS messages.
 
     * **Connectivity:**\
-      Indicates the connectivity types (data, SMS, or both) by which the device is reachable from the network. A device is considered to be disconnected if it cannot be reached using either data or SMS connectivity.
+      Indicates the connectivity types (mobile data, SMS, or both) by which the device is reachable from the network. A device is considered to be disconnected if it cannot be reached using either mobile data or SMS connectivity.
 
     * **Device**:\
-      A device refers to any physical entity that can connect to a network and participate in network communication.
+      A device refers to any physical hardware that can connect to a mobile network and participate in network communication.
 
       At least one identifier for the device out of four options must be provided: IPv4 address, IPv6 address, Phone number, or Network Access Identifier assigned by the mobile network operator for the device. Where more than one device identifier is provided, only one identifier will be selected by the implementation and this choice indicated to the API consumer in the session creation response.
 
@@ -34,12 +34,12 @@ info:
 
     When creating a subscription, it is mandatory to provide the event types you are subscribing to, as multiple subscription-types are managed by this API.
 
-    Following event types are managed for this API:
+    The following event types may be requested for this API:
       - `org.camaraproject.device-reachability-status-subscriptions.v0.reachability-data` is sent when the device becomes connected to the network for data usage (regardless of the SMS reachability status)
       - `org.camaraproject.device-reachability-status-subscriptions.v0.reachability-sms` is sent when the device becomes connected to the network for SMS usage (regardless of the data reachability status)
       - `org.camaraproject.device-reachability-status-subscriptions.v0.reachability-disconnected` is sent when the device becomes disconnected from the network
 
-    Note: Additionally, the following events could be sent, which do not require a dedicated subscription:
+    Note: Additionally, the following events may be sent, which do not require a dedicated subscription:
       - `org.camaraproject.device-reachability-status-subscriptions.v0.subscription-started` is sent when the subscription starts.
       - `org.camaraproject.device-reachability-status-subscriptions.v0.subscription-updated` is sent when the subscription is updated.
       - `org.camaraproject.device-reachability-status-subscriptions.v0.subscription-ended` is sent when the subscription ends.
@@ -48,13 +48,12 @@ info:
       - the subscription expire time (optionally set by the requester) has been reached
       - the maximum number of subscription events (optionally set by the requester) has been reached
       - the subscription was deleted by the requester
-      - the Access Token `sinkCredential` (optionally set by the requester) expiration time has been reached
-      - the API server has to stop sending notification prematurely
+      - the expiry time for the access token `sinkCredential` (optionally set by the API consumer) time has been reached
+      - the API provider has to stop sending notifications early
 
     **Note on combined usage of `initialEvent` and `subscriptionMaxEvents`**:
 
-    If an event is triggered following `initialEvent` set to true,
-    this event will be counted towards `subscriptionMaxEvents` (if provided).
+    If an initial event is triggered because `initialEvent` set to true, that event will count towards `subscriptionMaxEvents` if that has been specified.
 
     **Clarification on `initialEvent` setting and event type behaviour:**
 
@@ -77,7 +76,7 @@ info:
     A detailed description of the event subscription and notification mechanism is provided in the `CAMARA API Event Subscription and Notification Guide`.
 
     _**WARNING**:\
-      API consumers may optionally provide a callback URL on which reachability status notifications from the API provider can be received. This callback endpoint must be exposed by API consumer as `POST /{$request.body#/sink}`. When an event occurs, the API provider will send the event to the URI specified by `sink`._
+      API consumers must provide a callback URL on which reachability status notifications from the API provider can be received. This callback endpoint must be exposed by API consumer as `POST /{$request.body#/sink}`. When an event occurs, the API provider will send the event to the URL specified by `sink`._
 
     <!-- CAMARA:MANDATORY:authorization-and-authentication:BEGIN -->
 
