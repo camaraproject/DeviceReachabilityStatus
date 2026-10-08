@@ -79,9 +79,9 @@ Feature: CAMARA Device reachability status API, vwip - Operation getReachability
     And the response property "$.lastStatusTime" is present and has a valid date-time format for a time in the past
     And the response property "$.connectivity" is not present
 
-#################
+##########################################################
 # Error scenarios for management of input parameter device
-##################
+##########################################################
 
   @device_reachability_status_C01.01_device_empty
   Scenario: The device value is an empty object
@@ -104,11 +104,11 @@ Feature: CAMARA Device reachability status API, vwip - Operation getReachability
     And the response property "$.message" contains a user friendly text
 
     Examples:
-      | device_identifier          | oas_spec_schema                             |
-      | $.device.phoneNumber       | #/components/schemas/PhoneNumber             |
-      | $.device.ipv4Address       | #/components/schemas/DeviceIpv4Addr          |
-      | $.device.ipv6Address       | #/components/schemas/DeviceIpv6Address       |
-      | $.device.networkIdentifier | #/components/schemas/NetworkAccessIdentifier |
+      | device_identifier                | oas_spec_schema                              |
+      | $.device.phoneNumber             | #/components/schemas/PhoneNumber             |
+      | $.device.ipv4Address             | #/components/schemas/DeviceIpv4Address       |
+      | $.device.ipv6Address             | #/components/schemas/DeviceIpv6Address       |
+      | $.device.networkAccessIdentifier | #/components/schemas/NetworkAccessIdentifier |
 
   # This scenario may happen e.g. with 2-legged access tokens, which do not identify a single device.
   @device_reachability_status_C01.03_device_not_found
