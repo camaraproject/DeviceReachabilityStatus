@@ -495,3 +495,31 @@ Feature: Device Reachability Status Subscriptions API, vwip - Operation createDe
     And the response property "$.status" is 422
     And the response property "$.code" is "PRIVATE_KEY_JWT_NOT_CONFIGURED"
     And the response property "$.message" contains a user friendly text
+
+#################
+# Error code 429
+#################
+
+  @reachability_status_subscriptions_create_429.01_Too_Many_Requests
+  #To test this scenario environment has to be configured to reject requests reaching the threshold limit set.
+  Scenario: Request is rejected due to threshold policy
+    Given a valid request for "createDeviceReachabilityStatusSubscription"
+    And the header "Authorization" is set to a valid access token
+    And the threshold of requests has been reached
+    When the request "createDeviceReachabilityStatusSubscription" is sent
+    Then the response status code is 429
+    And the response property "$.status" is 429
+    And the response property "$.code" is "TOO_MANY_REQUESTS"
+    And the response property "$.message" contains a user friendly text
+
+  @reachability_status_subscriptions_create_429.02_Quota_Exceeded
+  #To test this scenario environment has to be configured to reject requests reaching the allocated quota.
+  Scenario: Request is rejected due to API consumer quota being reached
+    Given a valid request for "createDeviceReachabilityStatusSubscription"
+    And the header "Authorization" is set to a valid access token
+    And the API consumer allocated quota of requests has been reached
+    When the request "createDeviceReachabilityStatusSubscription" is sent
+    Then the response status code is 429
+    And the response property "$.status" is 429
+    And the response property "$.code" is "QUOTA_EXCEEDED"
+    And the response property "$.message" contains a user friendly text
