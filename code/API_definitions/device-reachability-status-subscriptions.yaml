@@ -440,6 +440,8 @@ components:
       allOf:
         - $ref: "../common/CAMARA_event_common.yaml#/components/schemas/ConfigBase"
         - type: object
+          required:
+            - subscriptionDetail
           properties:
             subscriptionDetail:
               $ref: "#/components/schemas/CreateSubscriptionDetail"
@@ -972,4 +974,4 @@ components:
           page: 1
           perPage: 1
           totalCount: 0
-          totalPages: 1
+          totalPages: 0
