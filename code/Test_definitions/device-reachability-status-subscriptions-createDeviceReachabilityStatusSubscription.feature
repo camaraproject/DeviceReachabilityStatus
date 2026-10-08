@@ -20,7 +20,7 @@ Feature: Device Reachability Status Subscriptions API, vwip - Operation createDe
     And the resource "/device-reachability-status-subscriptions/vwip/subscriptions"
     And the header "Authorization" is set to a valid access token
     And the header "x-correlator" complies with the schema at "#/components/schemas/XCorrelator"
-    And the request body is compliant with the OAS schema at "#/component/schemas/SubscriptionRequest"
+    And the request body is compliant with the OAS schema at "#/components/schemas/SubscriptionRequest"
 
 ##########################
 # Happy path scenarios
@@ -79,7 +79,7 @@ Feature: Device Reachability Status Subscriptions API, vwip - Operation createDe
   Scenario Outline: Asynchronous subscription creation with 2- or 3-legged access token
     # Some implementations may only support synchronous subscription creation
     Given a valid target device, identified by either the access token or in the request body
-    And the request body is compliant with the OAS schema at "#/component/schemas/SubscriptionRequest"
+    And the request body is compliant with the OAS schema at "#/components/schemas/SubscriptionRequest"
     When the request "createDeviceReachabilityStatusSubscription" is sent
     And request property "$.types" is one of the allowed values "<subscription-creation-types>"
     And request property "$.protocol" is equal to "HTTP"
@@ -216,14 +216,14 @@ Feature: Device Reachability Status Subscriptions API, vwip - Operation createDe
     And the response body property "$.sinkCredential.credentialType" is set to value "PRIVATE_JWT_KEY"
     And the response body property "$.sinkCredential.jwksUri" is set to a valid value
 
-################
+##########################################################
 # Error scenarios for management of input parameter device
-##################
+##########################################################
 
   @reachability_status_subscriptions_C01.01_device_empty
   Scenario: The device value is an empty object
     Given the header "Authorization" is set to a valid access token which does not identify a single device
-    And the request body property "$.device" is set to: {}
+    And the request body property "$.config.subscriptionDetail.device" is set to: {}
     When the request "createDeviceReachabilityStatusSubscription" is sent
     Then the response status code is 400
     And the response property "$.status" is 400
@@ -241,17 +241,17 @@ Feature: Device Reachability Status Subscriptions API, vwip - Operation createDe
     And the response property "$.message" contains a user friendly text
 
     Examples:
-      | device_identifier          | oas_spec_schema                             |
-      | $.device.phoneNumber       | #/components/schemas/PhoneNumber             |
-      | $.device.ipv4Address       | #/components/schemas/DeviceIpv4Addr          |
-      | $.device.ipv6Address       | #/components/schemas/DeviceIpv6Address       |
-      | $.device.networkIdentifier | #/components/schemas/NetworkAccessIdentifier |
+      | device_identifier                                          | oas_spec_schema                              |
+      | $.config.subscriptionDetail.device.phoneNumber             | #/components/schemas/PhoneNumber             |
+      | $.config.subscriptionDetail.device.ipv4Address             | #/components/schemas/DeviceIpv4Address       |
+      | $.config.subscriptionDetail.device.ipv6Address             | #/components/schemas/DeviceIpv6Address       |
+      | $.config.subscriptionDetail.device.networkAccessIdentifier | #/components/schemas/NetworkAccessIdentifier |
 
   # This scenario may happen e.g. with 2-legged access tokens, which do not identify a single device.
   @reachability_status_subscriptions_C01.03_device_not_found
   Scenario: Some identifier cannot be matched to a device
     Given the header "Authorization" is set to a valid access token which does not identify a single device
-    And the request body property "$.device" is compliant with the schema but does not identify a device whose connectivity is managed by the API provider
+    And the request body property "$.config.subscriptionDetail.device" is compliant with the schema but does not identify a device whose connectivity is managed by the API provider
     When the request "createDeviceReachabilityStatusSubscription" is sent
     Then the response status code is 404
     And the response property "$.status" is 404
@@ -261,7 +261,7 @@ Feature: Device Reachability Status Subscriptions API, vwip - Operation createDe
   @reachability_status_subscriptions_C01.04_unnecessary_device
   Scenario: Device not to be included when it can be deduced from the access token
     Given the header "Authorization" is set to a valid access token identifying a device
-    And the request body property "$.device" is also set to a valid device, which may or may not be the same device
+    And the request body property "$.config.subscriptionDetail.device" is also set to a valid device, which may or may not be the same device
     When the request "createDeviceReachabilityStatusSubscription" is sent
     Then the response status code is 422
     And the response property "$.status" is 422
@@ -271,7 +271,7 @@ Feature: Device Reachability Status Subscriptions API, vwip - Operation createDe
   @reachability_status_subscriptions_C01.05_missing_device
   Scenario: Device not included and cannot be deduced from the access token
     Given the header "Authorization" is set to a valid access token which does not identify a single device
-    And the request body property "$.device" is not included
+    And the request body property "$.config.subscriptionDetail.device" is not included
     When the request "createDeviceReachabilityStatusSubscription" is sent
     Then the response status code is 422
     And the response property "$.status" is 422
@@ -282,7 +282,7 @@ Feature: Device Reachability Status Subscriptions API, vwip - Operation createDe
   Scenario: None of the provided device identifiers is supported by the implementation
     Given that some types of device identifiers are not supported by the implementation
     And the header "Authorization" is set to a valid access token which does not identify a single device
-    And the request body property "$.device" only includes device identifiers not supported by the implementation
+    And the request body property "$.config.subscriptionDetail.device" only includes device identifiers not supported by the implementation
     When the request "createDeviceReachabilityStatusSubscription" is sent
     Then the response status code is 422
     And the response property "$.status" is 422
@@ -464,17 +464,20 @@ Feature: Device Reachability Status Subscriptions API, vwip - Operation createDe
     And the response property "$.message" contains a user friendly text
 
 ##################
-# Error code 404
+# Error code 409
 ##################
+
+# No tests cases yet defined
 
 ##################
 # Error code 422
 ##################
 
+  # Note that the test conditions for this test cannot be satisified for the current definition of #/components/schemas/SubscriptionRequest
   @reachability_status_subscriptions_422.01_multi_event_not_supported
   Scenario: Multi-event subscriptions are not supported
     Given a valid 2- or 3-legged access token
-    And a request body that is compliant with the OAS schema at "#/component/schemas/SubscriptionRequest"
+    And a request body that is compliant with the OAS schema at "#/components/schemas/SubscriptionRequest"
     And request property "$.types" includes more than one subscription-type
     When the request "createDeviceReachabilityStatusSubscription" is sent
     Then the response status code is 422
