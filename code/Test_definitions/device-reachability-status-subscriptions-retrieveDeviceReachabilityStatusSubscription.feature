@@ -76,19 +76,17 @@ Feature: Device Reachability Status Subscriptions API, vwip - Operation retrieve
     And the response body property "$.sinkCredential.credentialType" is set to value "PRIVATE_JWT_KEY"
     And the response body property "$.sinkCredential.jwksUri" is set to a valid value
 
-################
-# Error scenarios for management of input parameter device
-##################
-
 ##################
 # Error code 400
 ##################
+
+# No test cases yet defined
 
 ##################
 # Error code 401
 ##################
 
-  @reachability_status_subscriptions_retrieve_401.4_no_authorization_header
+  @reachability_status_subscriptions_retrieve_401.01_no_authorization_header
   Scenario: No Authorization header
     Given the request header "Authorization" is removed
     When the request "retrieveDeviceReachabilityStatusSubscription" is sent
@@ -98,7 +96,7 @@ Feature: Device Reachability Status Subscriptions API, vwip - Operation retrieve
     And the response property "$.code" is "UNAUTHENTICATED"
     And the response property "$.message" contains a user friendly text
 
-  @reachability_status_subscriptions_retrieve_401.5_expired_access_token
+  @reachability_status_subscriptions_retrieve_401.02_expired_access_token
   Scenario: Expired access token
     Given the header "Authorization" is set to a previously valid but now expired access token
     When the request "retrieveDeviceReachabilityStatusSubscription" is sent
@@ -108,7 +106,7 @@ Feature: Device Reachability Status Subscriptions API, vwip - Operation retrieve
     And the response property "$.code" is "UNAUTHENTICATED"
     And the response property "$.message" contains a user friendly text
 
-  @reachability_status_subscriptions_retrieve_401.6_malformed_access_token
+  @reachability_status_subscriptions_retrieve_401.03_malformed_access_token
   Scenario: Malformed access token
     Given the header "Authorization" is set to a malformed token
     When the request "retrieveDeviceReachabilityStatusSubscription" is sent
@@ -122,11 +120,13 @@ Feature: Device Reachability Status Subscriptions API, vwip - Operation retrieve
 # Error code 403
 ##################
 
+# No test cases yet defined
+
 ##################
 # Error code 404
 ##################
 
-  @reachability_status_subscriptions_404.1_retrieve_unknown_subscription_id
+  @reachability_status_subscriptions_404.01_retrieve_unknown_subscription_id
   Scenario: Get subscription when subscriptionId is unknown to the system
     Given that there is no valid subscription with "subscriptionId" equal to "id"
     When the request "retrieveDeviceReachabilityStatusSubscription" is sent
@@ -135,7 +135,3 @@ Feature: Device Reachability Status Subscriptions API, vwip - Operation retrieve
     And the response property "$.status" is 404
     And the response property "$.code" is "NOT_FOUND"
     And the response property "$.message" contains a user friendly text
-
-##################
-# Error code 422
-##################
