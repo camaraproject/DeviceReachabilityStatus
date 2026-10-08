@@ -196,10 +196,4 @@ Feature: Device Reachability Status Subscriptions API, vwip - Operation retrieve
 # Error code 403
 ##################
 
-##################
-# Error code 404
-##################
-
-##################
-# Error code 422
-##################
+# No test cases yet defined
