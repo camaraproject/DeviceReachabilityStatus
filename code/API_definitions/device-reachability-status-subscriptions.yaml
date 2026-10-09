@@ -263,7 +263,7 @@ paths:
         "409":
           $ref: "../common/CAMARA_event_common.yaml#/components/responses/CreateSubscriptionConflict409"
         "422":
-          $ref: "../common/CAMARA_event_common.yaml#/components/responses/CreateSubscriptionUnprocessableEntity422"
+          $ref: "../common/CAMARA_event_common.yaml#/components/responses/CreateSubscriptionDevice422"
         "429":
           $ref: "#/components/responses/TooManyRequestsOrQuotaExceeded429"
 
