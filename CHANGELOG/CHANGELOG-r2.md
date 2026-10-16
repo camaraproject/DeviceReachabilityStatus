@@ -108,7 +108,7 @@ Changes documented below are compared to version 0.9.0-rc.1.
 
 * [Added / Changed / Removed] Updates for Commonalities r4.4 by @eric-murray in https://github.com/camaraproject/DeviceReachabilityStatus/pull/92
   * Remove error codes 409 CONFLICT and 409 INCOMPATIBLE_STATE for device-reachability-status-subscriptions subscription creation
-  * Remove error cods 40 OUT_OF_RANGE dor device-reachability-status-subscriptions subscription listing
+  * Remove error code 400 OUT_OF_RANGE for device-reachability-status-subscriptions subscription listing
 
 ## device-reachability-status 1.2.0-rc.4
 
