@@ -62,15 +62,43 @@ Changes documented below are compared to version 0.9.0-rc.1.
 
 ### Breaking changes
 
-* N/A
+* [Added / Changed / Removed] Updates for Commonalities r4.4 by @eric-murray in https://github.com/camaraproject/DeviceReachabilityStatus/pull/92
+  * Add 422 MULTIEVENT_SUBSCRIPTION_NOT_SUPPORTED, MULTIEVENT_COMBINATION_TEMPORARILY_NOT_SUPPORTED and PRIVATE_KEY_JWT_NOT_CONFIGURED for device-reachability-status-subscriptions subscription creation
+  * Add 404 IDENTIFIER_NOT_FOUND for device-reachability-status-subscriptions subscription creation
+  * Property subscriptionDetail is now a required subscription creation parameter
 
 ### Added
 
-* N/A
+* [Added] Add scenarios for retrieving subscription lists for the different pagination options by @eric-murray in https://github.com/camaraproject/DeviceReachabilityStatus/pull/86
+  * Add new scenarios or update and rename existing scenarios for subscription listing
+    * @reachability_status_subscriptions_01_operation_to_retrieve_list_of_subscriptions_2legs
+    * @reachability_status_subscriptions_02_operation_to_retrieve_list_of_subscriptions_3legs
+    * @reachability_status_subscriptions_04_pagination_default_values
+    * @reachability_status_subscriptions_05_pagination_custom_values
+    * @reachability_status_subscriptions_06_pagination_middle_page
+    * @reachability_status_subscriptions_07_pagination_last_page
+    * @reachability_status_subscriptions_retrieve_list_400.01_pagination_invalid_page_parameter
+    * @reachability_status_subscriptions_retrieve_list_400.02_pagination_invalid_perPage_parameter
+* [Added / Changed / Removed] Updates for Commonalities r4.4 by @eric-murray in https://github.com/camaraproject/DeviceReachabilityStatus/pull/92
+    * Add 422 MULTIEVENT_SUBSCRIPTION_NOT_SUPPORTED, MULTIEVENT_COMBINATION_TEMPORARILY_NOT_SUPPORTED and PRIVATE_KEY_JWT_NOT_CONFIGURED for device-reachability-status-subscriptions subscription creation
+    * Add 404 IDENTIFIER_NOT_FOUND for device-reachability-status-subscriptions subscription creation
+    * Add new test scenarios
+      * @reachability_status_subscriptions_08_subscription_creation_initial_event
+      * @reachability_status_subscriptions_09_Create_reachability_status_subscription_sync_with_accesstoken_sink_credential
+      * @reachability_status_subscriptions_10_Create_reachability_status_subscription_sync_with_private_jwt_key_sink_credential_out_of_band_provisioning
+      * @reachability_status_subscriptions_11_Create_reachability_status_subscription_sync_with_private_jwt_key_sink_credential_in_band_provisioning
+      * @reachability_status_subscriptions_422.02_creation_with_private_jwt_key_not_configured
+      * @reachability_status_subscriptions_03_Operation_to_retrieve_subscription_based_on_an_existing_subscription-id_access_token_sink_credential_returned
+      * @reachability_status_subscriptions_04_Operation_to_retrieve_subscription_based_on_an_existing_subscription-id_private_jwt_key_sink_credential_returned
 
 ### Changed
 
-* N/A
+* [Changed] Refactor subscription schemas for Commonalities r4.4 and add initialEvent by @eric-murray in https://github.com/camaraproject/DeviceReachabilityStatus/pull/90
+* [Added / Changed / Removed] Updates for Commonalities r4.4 by @eric-murray in https://github.com/camaraproject/DeviceReachabilityStatus/pull/92
+  * Renumber some test scenarios
+  * Property subscriptionDetail is now a required subscription creation parameter
+  * Update examples
+* [Changed] Improve documentation and fix typos by @eric-murray in https://github.com/camaraproject/DeviceReachabilityStatus/pull/85
 
 ### Fixed
 
@@ -78,7 +106,9 @@ Changes documented below are compared to version 0.9.0-rc.1.
 
 ### Removed
 
-* N/A
+* [Added / Changed / Removed] Updates for Commonalities r4.4 by @eric-murray in https://github.com/camaraproject/DeviceReachabilityStatus/pull/92
+  * Remove error codes 409 CONFLICT and 409 INCOMPATIBLE_STATE for device-reachability-status-subscriptions subscription creation
+  * Remove error cods 40 OUT_OF_RANGE dor device-reachability-status-subscriptions subscription listing
 
 ## device-reachability-status 1.2.0-rc.4
 
@@ -97,11 +127,20 @@ Changes documented below are compared to version 1.2.0-rc.3.
 
 ### Added
 
-* N/A
+* [Added / Changed / Removed] Updates for Commonalities r4.4 by @eric-murray in https://github.com/camaraproject/DeviceReachabilityStatus/pull/92
+  * Add new test scenarios
+    * @device_reachability_status_429.01_Too_Many_Requests
+    * @device_reachability_status_429.02_Quota_Exceeded
 
 ### Changed
 
-* N/A
+* [Changed] Refactor subscription schemas for Commonalities r4.4 and add initialEvent by @eric-murray in https://github.com/camaraproject/DeviceReachabilityStatus/pull/90
+  * Update info.description text
+* [Added / Changed / Removed] Updates for Commonalities r4.4 by @eric-murray in https://github.com/camaraproject/DeviceReachabilityStatus/pull/92
+  * Rename device-reachability-status.feature to device-reachability-status-getReachabilityStatus.feature
+  * Renumber some test scenarios
+  * Update examples
+* [Changed] Improve documentation and fix typos by @eric-murray in https://github.com/camaraproject/DeviceReachabilityStatus/pull/85
 
 ### Fixed
 
@@ -109,7 +148,8 @@ Changes documented below are compared to version 1.2.0-rc.3.
 
 ### Removed
 
-* N/A
+* [Added / Changed / Removed] Updates for Commonalities r4.4 by @eric-murray in https://github.com/camaraproject/DeviceReachabilityStatus/pull/92
+  * Remove 403 INVALID_TOKEN_CONTEXT and 404 NOT_FOUND from device-reachability-status
 
 **Full Changelog**: https://github.com/camaraproject/DeviceReachabilityStatus/compare/r2.1...r2.2
 
