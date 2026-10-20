@@ -103,7 +103,7 @@ Feature: Device Reachability Status Subscriptions API, vwip - Operation createDe
     Then the response code is 201 or 202
     And event notification "subscription-started" is received on callback-url
     And notification body complies with the OAS schema at "#/components/schemas/EventSubscriptionStarted"
-    And type="org.camaraproject.device-roaming-status-subscriptions.v0.subscription-started"
+    And type="org.camaraproject.device-reachability-status-subscriptions.v0.subscription-started"
     And the response property "$.initiationReason" is "SUBSCRIPTION_CREATED"
 
   @reachability_status_subscriptions_04_receive_notification_when_device_reachability_changed_to_data_usage
