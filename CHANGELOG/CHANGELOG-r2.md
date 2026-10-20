@@ -78,7 +78,6 @@ Changes documented below are compared to version 0.9.0-rc.1.
     * @reachability_status_subscriptions_retrieve_list_400.01_pagination_invalid_page_parameter
     * @reachability_status_subscriptions_retrieve_list_400.02_pagination_invalid_perPage_parameter
 * [Added / Changed / Removed] Updates for Commonalities r4.4 by @eric-murray in https://github.com/camaraproject/DeviceReachabilityStatus/pull/92
-    * Add 422 MULTIEVENT_SUBSCRIPTION_NOT_SUPPORTED, MULTIEVENT_COMBINATION_TEMPORARILY_NOT_SUPPORTED and PRIVATE_KEY_JWT_NOT_CONFIGURED for device-reachability-status-subscriptions subscription creation
     * Add 404 IDENTIFIER_NOT_FOUND for device-reachability-status-subscriptions subscription creation
     * Add new test scenarios
       * @reachability_status_subscriptions_08_subscription_creation_initial_event
