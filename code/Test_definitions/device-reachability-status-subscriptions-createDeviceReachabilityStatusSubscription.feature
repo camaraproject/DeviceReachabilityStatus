@@ -199,7 +199,7 @@ Feature: Device Reachability Status Subscriptions API, vwip - Operation createDe
     And the response header "x-correlator" has the same value as the request header "x-correlator"
     And the response body complies with the OAS schema at "#/components/schemas/Subscription"
 
-  @reachability_status_subscriptions_11_create_reachability_status_subscription_sync_with_private_jwt_key_sink_credential_in_band_provisioning
+  @reachability_status_subscriptions_11_create_reachability_status_subscription_sync_with_private_key_jwt_sink_credential_in_band_provisioning
   Scenario: Create reachability status subscription (sync creation) with PRIVATE_KEY_JWT sinkCredential, in-band provisioning
   # Some implementations may only support asynchronous subscription creation
   # Some implementations may additionally support in_band provisioning
