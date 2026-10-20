@@ -72,6 +72,7 @@ Feature: CAMARA Device reachability status API, vwip - Operation getReachability
     And the request body is set to a valid request body
     And the device is supported by the service, but is not connected to the API provider's network
     When the request "getReachabilityStatus" is sent
+    Then the response code is 200
     And the response header "Content-Type" is "application/json"
     And the response header "x-correlator" has same value as the request header "x-correlator"
     And the response body complies with the OAS schema at "#/components/schemas/ReachabilityStatusResponse"
@@ -219,7 +220,7 @@ Feature: CAMARA Device reachability status API, vwip - Operation getReachability
   @device_reachability_status_429.01_Too_Many_Requests
   #To test this scenario environment has to be configured to reject requests reaching the threshold limit set.
   Scenario: Request is rejected due to threshold policy
-    Given a valid request for "getRoamingStatus"
+    Given a valid request for "getReachabilityStatus"
     And the header "Authorization" is set to a valid access token
     And the threshold of requests has been reached
     When the request "getReachabilityStatus" is sent
@@ -231,7 +232,7 @@ Feature: CAMARA Device reachability status API, vwip - Operation getReachability
   @device_reachability_status_429.02_Quota_Exceeded
   #To test this scenario environment has to be configured to reject requests reaching the allocated quota.
   Scenario: Request is rejected due to API consumer quota being reached
-    Given a valid request for "getRoamingStatus"
+    Given a valid request for "getReachabilityStatus"
     And the header "Authorization" is set to a valid access token
     And the API consumer allocated quota of requests has been reached
     When the request "getReachabilityStatus" is sent

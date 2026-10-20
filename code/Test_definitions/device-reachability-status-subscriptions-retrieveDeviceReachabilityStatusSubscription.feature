@@ -54,7 +54,7 @@ Feature: Device Reachability Status Subscriptions API, vwip - Operation retrieve
   @reachability_status_subscriptions_03_Operation_to_retrieve_subscription_based_on_an_existing_subscription-id_access_token_sink_credential_returned
   # Some implementations may decide to not return the sinkCredential in the response (data minimization principle)
   Scenario: Get a subscription based on existing subscription-id, with ACCESSTOKEN sinkCredential returned.
-    Given the path parameter "subscriptionId" is set to the identifier of an existing roaming status subscription
+    Given the path parameter "subscriptionId" is set to the identifier of an existing reachability status subscription
     When the request "retrieveDeviceReachabilityStatusSubscription" is sent
     Then the response code is 200
     And the response header "Content-Type" is "application/json"
@@ -67,7 +67,7 @@ Feature: Device Reachability Status Subscriptions API, vwip - Operation retrieve
   # Some implementations may decide to not return the sinkCredential in the response (data minimization principle)
   # Mainly applicable for in-band provisioning of PRIVATE_KEY_JWT mode for a given subscription
   Scenario: Get a subscription based on existing subscription-id, with PRIVATE_KEY_JWT sinkCredential returned.
-    Given the path parameter "subscriptionId" is set to the identifier of an existing roaming status subscription
+    Given the path parameter "subscriptionId" is set to the identifier of an existing reachability status subscription
     When the request "retrieveDeviceReachabilityStatusSubscription" is sent
     Then the response code is 200
     And the response header "Content-Type" is "application/json"
