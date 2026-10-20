@@ -142,7 +142,7 @@ Feature: Device Reachability Status Subscriptions API, vwip - Operation createDe
     And the subscription property "$.sink" is a valid callback URL
     When the subscriptionExpireTime is reached
     Then a subscription termination event notification is sent to the callback URL
-    And the notification body complies with the OAS schema at "#/components/schemas/EventSubscriptionEnds"
+    And the notification body complies with the OAS schema at "#/components/schemas/EventSubscriptionEnded"
     And the notification property "$.type" is "org.camaraproject.device-reachability-status-subscriptions.v0.subscription-ended"
     And the notification property "$.data.subscriptionId" is equal to "id"
     And the notification property "$.data.terminationReason" is equal to "SUBSCRIPTION_EXPIRED"
@@ -154,7 +154,7 @@ Feature: Device Reachability Status Subscriptions API, vwip - Operation createDe
     And the subscription property "$.sink" is a valid callback URL
     When a single notification corresponding to subscription property "$.types" has been sent to the callback URL
     Then a subscription termination event notification is sent to the callback URL
-    And the notification body complies with the OAS schema at "#/components/schemas/EventSubscriptionEnds"
+    And the notification body complies with the OAS schema at "#/components/schemas/EventSubscriptionEnded"
     And the notification property "$.type" is equal to "org.camaraproject.device-reachability-status-subscriptions.v0.subscription-ended"
     And the notification property "$.data.subscriptionId" is equal to "id"
     And the notification request property "$.data.terminationReason" is equal to "MAX_EVENTS_REACHED"
@@ -169,7 +169,7 @@ Feature: Device Reachability Status Subscriptions API, vwip - Operation createDe
     And notification body complies with the OAS schema at "#/components/schemas/CloudEvent"
 
   @reachability_status_subscriptions_09_create_reachability_status_subscription_sync_with_accesstoken_sink_credential
-  Scenario: Create roaming status subscription (sync creation) with ACCESSTOKEN sinkCredential
+  Scenario: Create reachability status subscription (sync creation) with ACCESSTOKEN sinkCredential
   # Some implementations may only support asynchronous subscription creation
   # Some implementations may decide to not return the sinkCredential in the response (data minimization principle)
     Given that subscriptions are created synchronously
@@ -187,7 +187,7 @@ Feature: Device Reachability Status Subscriptions API, vwip - Operation createDe
     And the response body property "$.sinkCredential.accessTokenExpiresUtc", if present, is set to the same value of the request property "$.sinkCredential.accessTokenExpiresUtc"
 
   @reachability_status_subscriptions_10_create_reachability_status_subscription_sync_with_private_jwt_key_sink_credential_out_of_band_provisioning
-  Scenario: Create roaming status subscription (sync creation) with PRIVATE_JWT_KEY sinkCredential, out-of-band provisioning
+  Scenario: Create reachability status subscription (sync creation) with PRIVATE_KEY_JWT sinkCredential, out-of-band provisioning
   # Some implementations may only support asynchronous subscription creation
   # Some implementations may only support out_of_band provisioning
     Given that subscriptions are created synchronously
@@ -200,7 +200,7 @@ Feature: Device Reachability Status Subscriptions API, vwip - Operation createDe
     And the response body complies with the OAS schema at "#/components/schemas/Subscription"
 
   @reachability_status_subscriptions_11_create_reachability_status_subscription_sync_with_private_jwt_key_sink_credential_in_band_provisioning
-  Scenario: Create roaming status subscription (sync creation) with PRIVATE_JWT_KEY sinkCredential, in-band provisioning
+  Scenario: Create reachability status subscription (sync creation) with PRIVATE_KEY_JWT sinkCredential, in-band provisioning
   # Some implementations may only support asynchronous subscription creation
   # Some implementations may additionally support in_band provisioning
     Given that subscriptions are created synchronously
