@@ -93,7 +93,6 @@ Changes documented below are compared to version 0.9.0-rc.1.
 * [Changed] Refactor subscription schemas for Commonalities r4.4 and add initialEvent by @eric-murray in https://github.com/camaraproject/DeviceReachabilityStatus/pull/90
 * [Added / Changed / Removed] Updates for Commonalities r4.4 by @eric-murray in https://github.com/camaraproject/DeviceReachabilityStatus/pull/92
   * Renumber some test scenarios
-  * Property subscriptionDetail is now a required subscription creation parameter
   * Update examples
 * [Changed] Improve documentation and fix typos by @eric-murray in https://github.com/camaraproject/DeviceReachabilityStatus/pull/85
 
