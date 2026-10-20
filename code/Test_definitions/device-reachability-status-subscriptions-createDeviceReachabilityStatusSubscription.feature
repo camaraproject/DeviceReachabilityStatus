@@ -152,7 +152,7 @@ Feature: Device Reachability Status Subscriptions API, vwip - Operation createDe
     And the subscription property "$.sink" is a valid callback URL
     When the subscriptionExpireTime is reached
     Then a subscription termination event notification is sent to the callback URL
-    And the notification body complies with the OAS schema at "#/components/schemas/EventSubscriptionEnds"
+    And the notification body complies with the OAS schema at "#/components/schemas/EventSubscriptionEnded"
     And the notification property "$.type" is "org.camaraproject.device-reachability-status-subscriptions.v0.subscription-ended"
     And the notification property "$.data.subscriptionId" is equal to "id"
     And the notification property "$.data.terminationReason" is equal to "SUBSCRIPTION_EXPIRED"
@@ -164,7 +164,7 @@ Feature: Device Reachability Status Subscriptions API, vwip - Operation createDe
     And the subscription property "$.sink" is a valid callback URL
     When a single notification corresponding to subscription property "$.types" has been sent to the callback URL
     Then a subscription termination event notification is sent to the callback URL
-    And the notification body complies with the OAS schema at "#/components/schemas/EventSubscriptionEnds"
+    And the notification body complies with the OAS schema at "#/components/schemas/EventSubscriptionEnded"
     And the notification property "$.type" is equal to "org.camaraproject.device-reachability-status-subscriptions.v0.subscription-ended"
     And the notification property "$.data.subscriptionId" is equal to "id"
     And the notification request property "$.data.terminationReason" is equal to "MAX_EVENTS_REACHED"
