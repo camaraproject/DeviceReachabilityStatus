@@ -227,7 +227,7 @@ paths:
                     lastStatusTime: "2024-02-20T10:41:38.657Z"
                     reachable: false
         "400":
-          $ref: "../common/CAMARA_common.yaml#/components/responses/BadReques400"
+          $ref: "../common/CAMARA_common.yaml#/components/responses/BadRequest400"
         "401":
           $ref: "../common/CAMARA_common.yaml#/components/responses/Unauthenticated401"
         "403":
