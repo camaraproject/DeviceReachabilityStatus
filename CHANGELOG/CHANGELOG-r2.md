@@ -64,7 +64,6 @@ Changes documented below are compared to version 0.9.0-rc.1.
 
 * [Added / Changed / Removed] Updates for Commonalities r4.4 by @eric-murray in https://github.com/camaraproject/DeviceReachabilityStatus/pull/92
   * Add 404 IDENTIFIER_NOT_FOUND for device-reachability-status-subscriptions subscription creation
-  * Property subscriptionDetail is now a required subscription creation parameter
 
 ### Added
 
