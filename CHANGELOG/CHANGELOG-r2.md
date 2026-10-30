@@ -105,6 +105,8 @@ Changes documented below are compared to version 0.9.0-rc.1.
   * Renumber some test scenarios
   * Update examples
 * [Changed] Improve documentation and fix typos by @eric-murray in https://github.com/camaraproject/DeviceReachabilityStatus/pull/85
+* [Changed] Clarify that SMS reachability events are sent regardless of data reachability status by @eric-murray in https://github.com/camaraproject/DeviceReachabilityStatus/pull/101
+  * `reachability-sms` events are now sent when the device is connected for SMS regardless of its data reachability; in 0.9.0-rc.1 they were sent only when the device was connected for SMS only
 
 ### Fixed
 
