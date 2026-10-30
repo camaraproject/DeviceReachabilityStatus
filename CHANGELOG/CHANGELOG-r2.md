@@ -111,7 +111,6 @@ Changes documented below are compared to version 0.9.0-rc.1.
 ### Fixed
 
 * [Fixed] Fix typo PRIVATE_JWT_KEY to PRIVATE_KEY_JWT in feature files by @eric-murray in https://github.com/camaraproject/DeviceReachabilityStatus/pull/99
-* [Fixed] Clarify that SMS reachability events are sent regardless of data reachability status by @eric-murray in https://github.com/camaraproject/DeviceReachabilityStatus/pull/101
 * [Fixed] Fix typos in feature file scenario definitions by @eric-murray in https://github.com/camaraproject/DeviceReachabilityStatus/pull/100
 
 ### Removed
