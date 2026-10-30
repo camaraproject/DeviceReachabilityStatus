@@ -93,7 +93,7 @@ Changes documented below are compared to version 0.9.0-rc.1.
       * @reachability_status_subscriptions_create_429.01_Too_Many_Requests
       * @reachability_status_subscriptions_create_429.02_Quota_Exceeded
       * @reachability_status_subscriptions_03_Operation_to_retrieve_subscription_based_on_an_existing_subscription-id_access_token_sink_credential_returned
-      * @reachability_status_subscriptions_04_Operation_to_retrieve_subscription_based_on_an_existing_subscription-id_private_jwt_key_sink_credential_returned
+      * @reachability_status_subscriptions_04_Operation_to_retrieve_subscription_based_on_an_existing_subscription-id_private_key_jwt_sink_credential_returned
 * [Added] Add scenario for subscription-created event generation by @eric-murray in https://github.com/camaraproject/DeviceReachabilityStatus/pull/103
   * Define scenario @reachability_status_subscriptions_03_subscription_creation_event_validation for subscription creation events
   * Renumber some test scenarios accordingly
