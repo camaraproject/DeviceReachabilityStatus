@@ -85,11 +85,13 @@ Changes documented below are compared to version 0.9.0-rc.1.
 * [Added / Changed / Removed] Updates for Commonalities r4.4 by @eric-murray in https://github.com/camaraproject/DeviceReachabilityStatus/pull/92
     * Add 404 IDENTIFIER_NOT_FOUND for device-reachability-status-subscriptions subscription creation
     * Add new test scenarios
-      * @reachability_status_subscriptions_08_subscription_creation_initial_event
-      * @reachability_status_subscriptions_09_create_reachability_status_subscription_sync_with_accesstoken_sink_credential
-      * @reachability_status_subscriptions_10_create_reachability_status_subscription_sync_with_private_jwt_key_sink_credential_out_of_band_provisioning
-      * @reachability_status_subscriptions_11_create_reachability_status_subscription_sync_with_private_jwt_key_sink_credential_in_band_provisioning
-      * @reachability_status_subscriptions_422.02_creation_with_private_jwt_key_not_configured
+      * @reachability_status_subscriptions_09_subscription_creation_initial_event
+      * @reachability_status_subscriptions_10_create_reachability_status_subscription_sync_with_accesstoken_sink_credential
+      * @reachability_status_subscriptions_11_create_reachability_status_subscription_sync_with_private_key_jwt_sink_credential_out_of_band_provisioning
+      * @reachability_status_subscriptions_12_create_reachability_status_subscription_sync_with_private_key_jwt_sink_credential_in_band_provisioning
+      * @reachability_status_subscriptions_422.02_creation_with_private_key_jwt_not_configured
+      * @reachability_status_subscriptions_create_429.01_Too_Many_Requests
+      * @reachability_status_subscriptions_create_429.02_Quota_Exceeded
       * @reachability_status_subscriptions_03_Operation_to_retrieve_subscription_based_on_an_existing_subscription-id_access_token_sink_credential_returned
       * @reachability_status_subscriptions_04_Operation_to_retrieve_subscription_based_on_an_existing_subscription-id_private_jwt_key_sink_credential_returned
 * [Added] Add scenario for subscription-created event generation by @eric-murray in https://github.com/camaraproject/DeviceReachabilityStatus/pull/103
