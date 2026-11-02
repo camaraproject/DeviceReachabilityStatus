@@ -2,7 +2,7 @@ repository:
   repository_name: DeviceReachabilityStatus
   release_tag: r2.2
   release_type: pre-release-rc
-  release_date: null
+  release_date: '2026-11-02T20:32:11Z'
   src_commit_sha: 1cae79dcc5546e7afedb0197a0c57c9d81559af8
 apis:
 - api_name: device-reachability-status-subscriptions
