@@ -1,0 +1,16 @@
+repository:
+  repository_name: DeviceReachabilityStatus
+  release_tag: r2.3
+  release_type: public-release
+  release_date: null
+  src_commit_sha: 0f8c2fb0dd871e448d317129bf9d9e08a608b8a9
+apis:
+- api_name: device-reachability-status-subscriptions
+  api_version: 0.9.0
+  api_title: Device Reachability Status Subscriptions
+- api_name: device-reachability-status
+  api_version: 1.2.0
+  api_title: Device Reachability Status
+dependencies:
+  commonalities_release: r4.4 (0.9.0)
+  identity_consent_management_release: r4.2 (0.5.0)
