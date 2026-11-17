@@ -93,7 +93,6 @@ Changes documented below are compared to version 0.8.0.
   -  Addition of `page` and `perPage` query parameters to control pagination
   -  Returned subscriptions are now embedded in the array `subscriptions` within the response JSON, with the page tracked within the `pagination` JSON
   -  Addition of response headers `X-Total-Count`, `X-Total-Pages` and `Link` to facilitate page navigation
-* Property subscriptionDetail is now a required subscription creation parameter in https://github.com/camaraproject/DeviceReachabilityStatus/pull/92
 * Response code 404 IDENTIFIER_NOT_FOUND added for subscription creation in https://github.com/camaraproject/DeviceReachabilityStatus/pull/92
 * `reachability-sms` events are now sent when the device is connected for SMS regardless of its data reachability in https://github.com/camaraproject/DeviceReachabilityStatus/pull/101
 
