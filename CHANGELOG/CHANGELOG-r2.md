@@ -193,9 +193,7 @@ Changes documented below are compared to version 1.1.0.
 ### Removed
 
 * [Added / Changed / Removed] Updates for Commonalities r4.4 by @eric-murray in https://github.com/camaraproject/DeviceReachabilityStatus/pull/92
-  * Remove 403 INVALID_TOKEN_CONTEXT and 404 NOT_FOUND as a valid error response code for device-reachability-status
-* [Removed] Remove the OUT_OF_RANGE error response from device-reachability-status by @eric-murray in https://github.com/camaraproject/DeviceReachabilityStatus/pull/102
-  * Remove 400 OUT_OF_RANGE as a valid error response code for device-reachability-status
+  * Remove 404 NOT_FOUND as a valid error response code for device-reachability-status (404 IDENTIFIER_NOT_FOUND remains)
 
 **Full Changelog**: https://github.com/camaraproject/DeviceReachabilityStatus/compare/r1.2...r2.3
 
