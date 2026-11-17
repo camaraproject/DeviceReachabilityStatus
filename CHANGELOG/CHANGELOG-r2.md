@@ -175,15 +175,15 @@ Changes documented below are compared to version 1.1.0.
 
 ### Changed
 
-* [Changed] Refactor subscription schemas for Commonalities r4.4 and add initialEvent by @eric-murray in https://github.com/camaraproject/DeviceReachabilityStatus/pull/90
-  * Update info.description text
-* [Added / Changed / Removed] Updates for Commonalities r4.4 by @eric-murray in https://github.com/camaraproject/DeviceReachabilityStatus/pull/92
-  * Rename device-reachability-status.feature to device-reachability-status-getReachabilityStatus.feature
-  * Renumber some test scenarios
-  * Update examples
+* Aligned with CAMARA Commonalities r4.4 (0.9.0) by @eric-murray in https://github.com/camaraproject/DeviceReachabilityStatus/pull/63, https://github.com/camaraproject/DeviceReachabilityStatus/pull/90 and https://github.com/camaraproject/DeviceReachabilityStatus/pull/92
+  * Request inputs carry explicit length and range limits, e.g. `x-correlator` (256 characters) and the device identifiers; `device.ipv4Address.publicPort` must be at least 1 (`0` was allowed before but is not a usable port). No request that conforms to the documented semantics is rejected
+  * `connectivity` in the response has at most 2 items
+  * Updated the info.description template sections and added the section on request body strictness: requests with undeclared properties are rejected with `400 INVALID_ARGUMENT`
+  * Renamed device-reachability-status.feature to device-reachability-status-getReachabilityStatus.feature
+  * Renumbered some test scenarios
+  * Updated examples
 * [Changed] Improve documentation and fix typos by @eric-murray in https://github.com/camaraproject/DeviceReachabilityStatus/pull/85
 * Clarify LastStatusTime description in YAML by @eric-murray in https://github.com/camaraproject/DeviceReachabilityStatus/pull/51
-* Update API definitions to fix CAMARA validation warnings and hints by @eric-murray in https://github.com/camaraproject/DeviceReachabilityStatus/pull/63
 
 ### Fixed
 
