@@ -128,18 +128,18 @@ Changes documented below are compared to version 0.8.0.
 
 ### Changed
 
-* [Changed] Refactor subscription schemas for Commonalities r4.4 and add initialEvent by @eric-murray in https://github.com/camaraproject/DeviceReachabilityStatus/pull/90
-* [Added / Changed / Removed] Updates for Commonalities r4.4 by @eric-murray in https://github.com/camaraproject/DeviceReachabilityStatus/pull/92
-  * Renumber some test scenarios
-  * Update examples
+* Aligned with CAMARA Commonalities r4.4 (0.9.0) by @eric-murray in https://github.com/camaraproject/DeviceReachabilityStatus/pull/63, https://github.com/camaraproject/DeviceReachabilityStatus/pull/90 and https://github.com/camaraproject/DeviceReachabilityStatus/pull/92
+  * Pagination for listing of subscriptions using GET /subscriptions is now supported (see Breaking changes)
+    * Addition of `page` and `perPage` query parameters to control pagination
+    * Returned subscriptions are now embedded in the array `subscriptions` within the response JSON, with the page tracked within the `pagination` JSON
+    * Addition of response headers `X-Total-Count`, `X-Total-Pages` and `Link` to facilitate page navigation
+  * Request inputs carry explicit length and range limits, e.g. `x-correlator` (256 characters); `subscriptionMaxEvents` is at most 1000000; `device.ipv4Address.publicPort` must be at least 1 (`0` was allowed before but is not a usable port)
+  * Added the info.description section on request body strictness: requests with undeclared properties are rejected with `400 INVALID_ARGUMENT`
+  * Renumbered some test scenarios
+  * Updated examples
 * [Changed] Improve documentation and fix typos by @eric-murray in https://github.com/camaraproject/DeviceReachabilityStatus/pull/85
 * [Changed] Clarify that SMS reachability events are sent regardless of data reachability status by @eric-murray in https://github.com/camaraproject/DeviceReachabilityStatus/pull/101
-  * `reachability-sms` events are now sent when the device is connected for SMS regardless of its data reachability; in 0.9.0-rc.1 they were sent only when the device was connected for SMS only
-* Update API definitions to fix CAMARA validation warnings and hints by @eric-murray in https://github.com/camaraproject/DeviceReachabilityStatus/pull/63
-  - Pagination for listing of subscriptions using GET /subscriptions is now supported
-    -  Addition of `page` and `perPage` query parameters to control pagination
-    -  Returned subscriptions are now embedded in the array `subscriptions` within the response JSON, with the page tracked within the `pagination` JSON
-    -  Addition of response headers `X-Total-Count`, `X-Total-Pages` and `Link` to facilitate page navigation
+  * `reachability-sms` events are now sent when the device is connected for SMS regardless of its data reachability; in 0.8.0 they were sent only when the device was connected for SMS only
 
 ### Fixed
 
