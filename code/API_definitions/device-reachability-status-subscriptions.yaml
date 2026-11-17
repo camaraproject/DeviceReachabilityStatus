@@ -169,7 +169,9 @@ paths:
       security:
         - openId:
             - device-reachability-status-subscriptions:org.camaraproject.device-reachability-status-subscriptions.v0.reachability-data:create
+        - openId:
             - device-reachability-status-subscriptions:org.camaraproject.device-reachability-status-subscriptions.v0.reachability-sms:create
+        - openId:
             - device-reachability-status-subscriptions:org.camaraproject.device-reachability-status-subscriptions.v0.reachability-disconnected:create
       requestBody:
         required: true
