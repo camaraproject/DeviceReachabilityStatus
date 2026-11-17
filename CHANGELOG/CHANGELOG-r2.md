@@ -148,11 +148,8 @@ Changes documented below are compared to version 0.8.0.
 
 ### Removed
 
-* [Added / Changed / Removed] Updates for Commonalities r4.4 by @eric-murray in https://github.com/camaraproject/DeviceReachabilityStatus/pull/92
-  * Remove error codes 409 CONFLICT and 409 INCOMPATIBLE_STATE for device-reachability-status-subscriptions subscription creation
-  * Remove error code 400 OUT_OF_RANGE for device-reachability-status-subscriptions subscription listing
-  * Remove error code 403 INVALID_TOKEN_CONTEXT for device-reachability-status-subscriptions subscription listing, retrieval and deletion
-  * Remove error code 404 IDENTIFIER_NOT_FOUND for device-reachability-status-subscriptions subscription retrieval and deletion (404 NOT_FOUND remains)
+* The `PLAIN` and `REFRESHTOKEN` sink credential types and the `AMQP`, `KAFKA`, `MQTT3`, `MQTT5` and `NATS` protocol values by @eric-murray in https://github.com/camaraproject/DeviceReachabilityStatus/pull/63
+  * Not breaking: 0.8.0 already required `credentialType` `ACCESSTOKEN` and allowed only `HTTP`
 
 ## device-reachability-status 1.2.0
 
