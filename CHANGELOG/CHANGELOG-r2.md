@@ -145,7 +145,6 @@ Changes documented below are compared to version 0.8.0.
 
 * [Fixed] Fix typos in feature file scenario definitions by @eric-murray in https://github.com/camaraproject/DeviceReachabilityStatus/pull/100
 * Fix network identifier example by @bigludo7 in https://github.com/camaraproject/DeviceReachabilityStatus/pull/55
-* [Fixed] Fix test scenario for subscription-started events by @eric-murray in https://github.com/camaraproject/DeviceReachabilityStatus/pull/113
 
 ### Removed
 
