@@ -2,6 +2,7 @@
 
 <!-- TOC:START -->
 ## Table of Contents
+- **[r2.3](#r23)**
 - [r2.2](#r22)
 - [r2.1](#r21)
 <!-- TOC:END -->
@@ -14,6 +15,146 @@ The below sections record the changes for each API version in each release as fo
 * for the first release-candidate, all changes since the last public release
 * for subsequent release-candidate(s), only the delta to the previous release-candidate
 * for a public release, the consolidated changes since the previous public release
+
+# r2.3
+
+## Release Notes
+
+This public release contains the definition and documentation of
+* device-reachability-status-subscriptions 0.9.0
+* device-reachability-status 1.2.0
+
+The API definition(s) are based on
+* Commonalities r4.4 (0.9.0)
+* Identity and Consent Management r4.2 (0.5.0)
+
+## device-reachability-status-subscriptions 0.9.0
+
+**device-reachability-status-subscriptions 0.9.0 is an initial public version of this API.**
+
+Changes documented below are compared to version 0.8.0.
+
+- API definition **with inline documentation**:
+  - [View it on ReDoc](https://redocly.github.io/redoc/?url=https://raw.githubusercontent.com/camaraproject/DeviceReachabilityStatus/r2.3/code/API_definitions/device-reachability-status-subscriptions.yaml&nocors)
+  - [View it on Swagger Editor](https://camaraproject.github.io/swagger-ui/?url=https://raw.githubusercontent.com/camaraproject/DeviceReachabilityStatus/r2.3/code/API_definitions/device-reachability-status-subscriptions.yaml)
+  - OpenAPI [YAML spec file](https://github.com/camaraproject/DeviceReachabilityStatus/blob/r2.3/code/API_definitions/device-reachability-status-subscriptions.yaml)
+
+### Breaking changes
+
+- Pagination for listing of subscriptions using GET /subscriptions is now supported in https://github.com/camaraproject/DeviceReachabilityStatus/pull/63
+  -  Addition of `page` and `perPage` query parameters to control pagination
+  -  Returned subscriptions are now embedded in the array `subscriptions` within the response JSON, with the page tracked within the `pagination` JSON
+  -  Addition of response headers `X-Total-Count`, `X-Total-Pages` and `Link` to facilitate page navigation
+* Response code 404 IDENTIFIER_NOT_FOUND added for subscription creation in https://github.com/camaraproject/DeviceReachabilityStatus/pull/92
+  * Implementations of 0.8.0 might already have returned this response, as the 0.8.0 test definitions expected it for an unknown device
+* `reachability-sms` events are now sent when the device is connected for SMS regardless of its data reachability in https://github.com/camaraproject/DeviceReachabilityStatus/pull/101
+
+### Added
+
+* Added scenarios for retrieving subscription lists for the different pagination options by @eric-murray in https://github.com/camaraproject/DeviceReachabilityStatus/pull/86
+  * Added new scenarios or update and rename existing scenarios for subscription listing
+    * @reachability_status_subscriptions_01_operation_to_retrieve_list_of_subscriptions_2legs
+    * @reachability_status_subscriptions_02_operation_to_retrieve_list_of_subscriptions_3legs
+    * @reachability_status_subscriptions_04_pagination_default_values
+    * @reachability_status_subscriptions_05_pagination_custom_values
+    * @reachability_status_subscriptions_06_pagination_middle_page
+    * @reachability_status_subscriptions_07_pagination_last_page
+    * @reachability_status_subscriptions_retrieve_list_400.01_pagination_invalid_page_parameter
+    * @reachability_status_subscriptions_retrieve_list_400.02_pagination_invalid_perPage_parameter
+* Aligned with CAMARA Commonalities r4.4 (0.9.0) by @eric-murray in https://github.com/camaraproject/DeviceReachabilityStatus/pull/63 and https://github.com/camaraproject/DeviceReachabilityStatus/pull/92
+  * Added support for sink credential type `PRIVATE_KEY_JWT` for notification delivery, with the 422 `PRIVATE_KEY_JWT_NOT_CONFIGURED` error on subscription creation; `sinkCredential` can be returned in subscription responses
+  * Subscription creation declares the additional error codes 404 `IDENTIFIER_NOT_FOUND` (see Breaking changes) and 422 `MULTIEVENT_COMBINATION_TEMPORARILY_NOT_SUPPORTED`
+  * Added new test scenarios
+    * @reachability_status_subscriptions_09_subscription_creation_initial_event
+    * @reachability_status_subscriptions_10_create_reachability_status_subscription_sync_with_accesstoken_sink_credential
+    * @reachability_status_subscriptions_11_create_reachability_status_subscription_sync_with_private_key_jwt_sink_credential_out_of_band_provisioning
+    * @reachability_status_subscriptions_12_create_reachability_status_subscription_sync_with_private_key_jwt_sink_credential_in_band_provisioning
+    * @reachability_status_subscriptions_422.02_creation_with_private_key_jwt_not_configured
+    * @reachability_status_subscriptions_create_429.01_Too_Many_Requests
+    * @reachability_status_subscriptions_create_429.02_Quota_Exceeded
+    * @reachability_status_subscriptions_03_Operation_to_retrieve_subscription_based_on_an_existing_subscription-id_access_token_sink_credential_returned
+    * @reachability_status_subscriptions_04_Operation_to_retrieve_subscription_based_on_an_existing_subscription-id_private_key_jwt_sink_credential_returned
+* Added scenario for subscription-created event generation by @eric-murray in https://github.com/camaraproject/DeviceReachabilityStatus/pull/103 and https://github.com/camaraproject/DeviceReachabilityStatus/pull/113
+  * Defined scenario @reachability_status_subscriptions_03_subscription_creation_event_validation for subscription creation events
+  * Renumbered some test scenarios accordingly
+
+### Changed
+
+* Aligned with CAMARA Commonalities r4.4 (0.9.0) by @eric-murray in https://github.com/camaraproject/DeviceReachabilityStatus/pull/63, https://github.com/camaraproject/DeviceReachabilityStatus/pull/90 and https://github.com/camaraproject/DeviceReachabilityStatus/pull/92
+  * Pagination for listing of subscriptions using GET /subscriptions is now supported (see Breaking changes)
+    * Addition of `page` and `perPage` query parameters to control pagination
+    * Returned subscriptions are now embedded in the array `subscriptions` within the response JSON, with the page tracked within the `pagination` JSON
+    * Addition of response headers `X-Total-Count`, `X-Total-Pages` and `Link` to facilitate page navigation
+  * Request inputs carry explicit length and range limits, e.g.:
+    * `x-correlator` (256 characters);
+    *  `subscriptionMaxEvents` is at most 1000000;
+    *  `device.ipv4Address.publicPort` must be at least 1 (`0` was allowed before but is not a usable port)
+  * Added the info.description section on request body strictness: requests with undeclared properties are rejected with `400 INVALID_ARGUMENT`
+  * Renumbered some test scenarios
+  * Updated examples
+* Improved documentation and fix typos by @eric-murray in https://github.com/camaraproject/DeviceReachabilityStatus/pull/85
+* Clarified that SMS reachability events are sent regardless of data reachability status by @eric-murray in https://github.com/camaraproject/DeviceReachabilityStatus/pull/101
+  * `reachability-sms` events are now sent when the device is connected for SMS regardless of its data reachability; in 0.8.0 they were sent only when the device was connected for SMS only
+
+### Fixed
+
+* Fixed typos in feature file scenario definitions by @eric-murray in https://github.com/camaraproject/DeviceReachabilityStatus/pull/100
+* Fixed network identifier example by @bigludo7 in https://github.com/camaraproject/DeviceReachabilityStatus/pull/55
+
+### Removed
+
+* The `PLAIN` and `REFRESHTOKEN` sink credential types and the `AMQP`, `KAFKA`, `MQTT3`, `MQTT5` and `NATS` protocol values by @eric-murray in https://github.com/camaraproject/DeviceReachabilityStatus/pull/63
+  * Not breaking: 0.8.0 already required `credentialType` `ACCESSTOKEN` and allowed only `HTTP`
+
+## device-reachability-status 1.2.0
+
+**device-reachability-status 1.2.0 is a minor update of this API.**
+
+Changes documented below are compared to version 1.1.0.
+
+- API definition **with inline documentation**:
+  - [View it on ReDoc](https://redocly.github.io/redoc/?url=https://raw.githubusercontent.com/camaraproject/DeviceReachabilityStatus/r2.3/code/API_definitions/device-reachability-status.yaml&nocors)
+  - [View it on Swagger Editor](https://camaraproject.github.io/swagger-ui/?url=https://raw.githubusercontent.com/camaraproject/DeviceReachabilityStatus/r2.3/code/API_definitions/device-reachability-status.yaml)
+  - OpenAPI [YAML spec file](https://github.com/camaraproject/DeviceReachabilityStatus/blob/r2.3/code/API_definitions/device-reachability-status.yaml)
+
+### Breaking changes
+
+* N/A
+
+### Added
+
+* Updates for Commonalities r4.4 by @eric-murray in https://github.com/camaraproject/DeviceReachabilityStatus/pull/92
+  * Added new test scenarios
+    * @device_reachability_status_429.01_Too_Many_Requests
+    * @device_reachability_status_429.02_Quota_Exceeded
+
+### Changed
+
+* Aligned with CAMARA Commonalities r4.4 (0.9.0) by @eric-murray in https://github.com/camaraproject/DeviceReachabilityStatus/pull/63, https://github.com/camaraproject/DeviceReachabilityStatus/pull/90 and https://github.com/camaraproject/DeviceReachabilityStatus/pull/92
+  * Request inputs carry explicit length and range limits, e.g.:
+    * `x-correlator` (256 characters) and the device identifiers;
+    * `device.ipv4Address.publicPort` must be at least 1 (`0` was allowed before but is not a usable port).
+
+    No request that conforms to the documented semantics is rejected
+  * `connectivity` in the response has at most 2 items
+  * Updated the info.description template sections and added the section on request body strictness: requests with undeclared properties are rejected with `400 INVALID_ARGUMENT`
+  * Renamed device-reachability-status.feature to device-reachability-status-getReachabilityStatus.feature
+  * Renumbered some test scenarios
+  * Updated examples
+* Improved documentation and fixed typos by @eric-murray in https://github.com/camaraproject/DeviceReachabilityStatus/pull/85
+* Clarified LastStatusTime description in YAML by @eric-murray in https://github.com/camaraproject/DeviceReachabilityStatus/pull/51
+
+### Fixed
+
+* Updated description for RequestReachabilityStatus by @eric-murray in https://github.com/camaraproject/DeviceReachabilityStatus/pull/52
+* Fixed network identifier example by @bigludo7 in https://github.com/camaraproject/DeviceReachabilityStatus/pull/55
+
+### Removed
+
+* Updates for Commonalities r4.4 by @eric-murray in https://github.com/camaraproject/DeviceReachabilityStatus/pull/92
+  * Removed 404 NOT_FOUND as a valid error response code for device-reachability-status (404 IDENTIFIER_NOT_FOUND remains)
+
+**Full Changelog**: https://github.com/camaraproject/DeviceReachabilityStatus/compare/r1.2...r2.3
 
 # r2.2
 
